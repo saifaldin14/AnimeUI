@@ -6,7 +6,7 @@
 		"module": "ESNext",
 		"skipLibCheck": true,
 		"paths": {
-			"cottage-ui": ["./lib/main.ts"]
+			"manga-ui": ["./lib/main.ts"]
 		},
 
 		/* Bundler mode */

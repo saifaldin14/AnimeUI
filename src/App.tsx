@@ -1,4 +1,4 @@
-import { Button } from "manga-ui";
+import { Button } from "anime-ui";
 
 function App() {
   return (

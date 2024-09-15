@@ -1,16 +1,16 @@
 {
-	"name": "manga-ui",
+	"name": "anime-ui",
 	"version": "0.0.2",
 	"type": "module",
 	"files": [
 		"dist"
 	],
-	"main": "./dist/manga-ui.umd.cjs",
-	"module": "./dist/manga-ui.js",
+	"main": "./dist/anime-ui.umd.cjs",
+	"module": "./dist/anime-ui.js",
 	"exports": {
 		".": {
-			"import": "./dist/manga-ui.js",
-			"require": "./dist/manga-ui.umd.cjs"
+			"import": "./dist/anime-ui.js",
+			"require": "./dist/anime-ui.umd.cjs"
 		}
 	},
 	"scripts": {

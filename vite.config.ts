@@ -10,8 +10,8 @@ export default defineConfig({
 		// library entry and output settings
 		lib: {
 			entry: resolve(__dirname, "lib/main.ts"),
-			name: "manga-ui",
-			fileName: "manga-ui",
+			name: "anime-ui",
+			fileName: "anime-ui",
 		},
 		// bundler options
 		// externalize react-related imports

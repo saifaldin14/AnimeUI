@@ -1,6 +1,5 @@
 import React from "react";
 
-// Define the possible positions for the speech bubble's tail
 type SpeechBubbleButtonProps = {
   text: string;
   tailPosition?: "left" | "right" | "none";
@@ -28,9 +27,9 @@ export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
 const getTailClass = (position: "left" | "right" | "none") => {
   switch (position) {
     case "left":
-      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-black left-[-20px] top-[50%] translate-y-[-50%]";
+      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-white border-solid left-[-10px] top-[50%] translate-y-[-50%]";
     case "right":
-      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-black right-[-20px] top-[50%] translate-y-[-50%]";
+      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-white border-solid right-[-10px] top-[50%] translate-y-[-50%]";
     default:
       return "";
   }

@@ -6,7 +6,7 @@ type SpeechBubbleButtonProps = {
   tailPosition?: "left" | "right" | "none";
 };
 
-const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
+export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   text,
   tailPosition = "none",
 }) => {
@@ -47,5 +47,3 @@ const getTailStyles = (position: "left" | "right" | "none") => {
       return "";
   }
 };
-
-export default SpeechBubbleButton;

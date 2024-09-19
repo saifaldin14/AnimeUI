@@ -12,12 +12,12 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    children: "Click me!",
+    text: "Click me!",
   },
 };
 
 export const Emoji: Story = {
   args: {
-    children: "😅",
+    text: "😅",
   },
 };

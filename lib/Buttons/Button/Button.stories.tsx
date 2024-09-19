@@ -25,7 +25,7 @@ export const Emoji: Story = {
 export const DifferentGradient: Story = {
   args: {
     text: "Hellooooo",
-    fromColor: "#000",
-    toColor: "#fff",
+    fromColor: "#00F260",
+    toColor: "#0575E6",
   },
 };

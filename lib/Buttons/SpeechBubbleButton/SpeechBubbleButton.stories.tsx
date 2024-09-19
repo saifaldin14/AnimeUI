@@ -12,7 +12,7 @@ type Story = StoryObj<typeof SpeechBubbleButton>;
 
 export const Default: Story = {
   args: {
-    text: "Click me!",
+    text: "No Tail",
   },
 };
 

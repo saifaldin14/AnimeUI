@@ -1,48 +1,36 @@
 import React from "react";
 
+type TailPosition = "left" | "right" | "none";
+
 type SpeechBubbleButtonProps = {
   text: string;
-  tailPosition?: "left" | "right" | "none";
+  onClick?: () => void;
+  tailPosition?: TailPosition;
 };
 
 export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   text,
+  onClick,
   tailPosition = "none",
 }) => {
+  let tailStyles = "";
+
+  if (tailPosition === "left") {
+    tailStyles = "after:left-0 after:-ml-4 after:border-r-white";
+  } else if (tailPosition === "right") {
+    tailStyles = "after:right-0 after:-mr-4 after:border-l-white";
+  }
+
   return (
-    <div
-      className={`relative inline-block p-4 bg-white border-2 border-black rounded-lg shadow-lg ${getTailStyles(
-        tailPosition
-      )}`}
+    <button
+      onClick={onClick}
+      className={`relative bg-white text-black px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${
+        tailPosition !== "none"
+          ? "after:absolute after:top-1/2 after:-mt-2 after:border-8 after:border-transparent"
+          : ""
+      } ${tailStyles}`}
     >
-      <button className="text-black font-bold">{text}</button>
-      {tailPosition !== "none" && (
-        <div className={getTailClass(tailPosition)} />
-      )}
-    </div>
+      {text}
+    </button>
   );
-};
-
-// Helper function to get the position for the tail based on props
-const getTailClass = (position: "left" | "right" | "none") => {
-  switch (position) {
-    case "left":
-      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-white border-solid left-[-10px] top-[50%] translate-y-[-50%]";
-    case "right":
-      return "absolute w-0 h-0 border-l-[20px] border-r-[20px] border-b-[20px] border-l-transparent border-r-transparent border-b-white border-solid right-[-10px] top-[50%] translate-y-[-50%]";
-    default:
-      return "";
-  }
-};
-
-// Helper function to adjust padding based on tail position
-const getTailStyles = (position: "left" | "right" | "none") => {
-  switch (position) {
-    case "left":
-      return "pl-8";
-    case "right":
-      return "pr-8";
-    default:
-      return "";
-  }
 };

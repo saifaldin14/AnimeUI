@@ -21,3 +21,11 @@ export const Emoji: Story = {
     text: "😅",
   },
 };
+
+export const DifferentGradient: Story = {
+  args: {
+    text: "Hellooooo",
+    fromColor: "#000",
+    toColor: "#fff",
+  },
+};

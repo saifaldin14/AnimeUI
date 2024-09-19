@@ -20,6 +20,7 @@ export const Left: Story = {
   args: {
     text: "From the left",
     tailPosition: "left",
+    tailColor: "#000",
   },
 };
 

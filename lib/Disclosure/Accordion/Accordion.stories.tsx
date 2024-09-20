@@ -28,3 +28,24 @@ export const Default: Story = {
     ],
   },
 };
+
+export const DifferentColour: Story = {
+  args: {
+    items: [
+      {
+        title: "Item 1",
+        content: "One",
+      },
+      {
+        title: "Item 2",
+        content: "Two",
+      },
+      {
+        title: "Item 3",
+        content: "Three",
+      },
+    ],
+    fromColor: "orange",
+    toColor: "yellow",
+  },
+};

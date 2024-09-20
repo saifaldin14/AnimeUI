@@ -4,4 +4,5 @@ export { SpeechBubbleButton } from './Buttons/SpeechBubbleButton/SpeechBubbleBut
 export { Accordion } from './Disclosure/Accordion/Accordion'
 export { Alert } from './Feedback/Alert/Alert'
 export { Toast } from './Feedback/Toast/Toast'
-export { ProgressBar } from './Feedback//ProgressBar/ProgressBar'
+export { ProgressBar } from './Feedback/ProgressBar/ProgressBar'
+export { CircularProgress } from './Feedback/CircularProgress/CircularProgress'

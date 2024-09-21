@@ -1,6 +1,7 @@
 import './tailwind.css'
 export { Button } from './Form/Button/Button'
 export { SpeechBubbleButton } from './Form/SpeechBubbleButton/SpeechBubbleButton'
+export { Checkbox } from './Form/Checkbox/Checkbox'
 export { Accordion } from './Disclosure/Accordion/Accordion'
 export { Tabs } from './Disclosure/Tabs/Tabs'
 export { Alert } from './Feedback/Alert/Alert'

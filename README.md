@@ -1,50 +1,56 @@
-# React + TypeScript + Vite
+# AnimeUI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+AnimeUI is a unique frontend component library specifically made for React applications. Designed with a distinct and cute anime aesthetic, AnimeUI brings the charm and dynamic energy of anime into your applications! Whether you're building a portfolio, a gaming platform, or any application, AnimeUI provides the perfect set of tools to infuse your project with a pretty dang cool anime vibe.
 
-Currently, two official plugins are available:
+# Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Anime-Inspired Aesthetics:
 
-## Expanding the ESLint configuration
+- Vibrant Gradients: Utilize smooth and eye-catching gradient backgrounds that transition seamlessly, reminiscent of anime art styles.
+- Cute Animations: Incorporate playful animations such as twinkling stars, floating hearts, and gentle glows to bring components to life.
+- Custom Fonts: Leverage anime-inspired fonts like "Press Start 2P" to enhance the thematic consistency across your application.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Comprehensive Component Library:
 
-- Configure the top-level `parserOptions` property like this:
+### Discolure Components
+- Accordion 
+- Tabs
+### Display Components
+- List
+- Table
+### Feedback Components
+- Alert
+- CircularProgress
+- ProgressBar
+- Skeleton
+- Toast
+### Form Components
+- Button
+- Checkbox
+- Editable
+- Input
+- Radio
+- Select
+- Slider
+- SpeechBubbleButton
+### Overlay Components
+- AlertDialog
+- Drawer
+- Menu
+- Modal
+- Popover
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Customization & Flexibility:
+- Color Schemes: Easily customize gradient colors, text colors, and other stylistic elements to match your application's palette.
+- Size Adjustments: Modify component sizes to fit various design requirements without compromising the anime aesthetic.
+- Animation Control: Toggle animations on or off and adjust their intensity to suit the desired user experience.
+- Accessibility: Components are built with accessibility in mind, ensuring they are usable and navigable for all users.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Seamless Integration with TailwindCSS:
+- Utility-First Approach: AnimeUI leverages TailwindCSS's utility classes, allowing for rapid and efficient styling.
+- Responsive Design: All components are fully responsive, ensuring a consistent look and feel across devices of all sizes.
+- Performance Optimized: TailwindCSS's optimized build process ensures that AnimeUI components are lightweight and performant.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Storybook Documentation:
+- Interactive Demos: Each component is accompanied by comprehensive Storybook stories, showcasing various states and customization options.
+- Ease of Use: Developers can explore and experiment with components in isolation, facilitating faster development and prototyping.

@@ -21,7 +21,7 @@ export const Default: Story = {
 export const CustomColours: Story = {
   args: {
     isOpen: true,
-    children: "Hey this is a alert dialog!",
+    children: "Hey this is a Modal!",
     onClose: () => {},
     fromColor: "pink",
     toColor: "lightblue",

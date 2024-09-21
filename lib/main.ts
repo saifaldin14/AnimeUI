@@ -1,6 +1,6 @@
 import './tailwind.css'
-export { Button } from './Buttons/Button/Button'
-export { SpeechBubbleButton } from './Buttons/SpeechBubbleButton/SpeechBubbleButton'
+export { Button } from './Form/Button/Button'
+export { SpeechBubbleButton } from './Form/SpeechBubbleButton/SpeechBubbleButton'
 export { Accordion } from './Disclosure/Accordion/Accordion'
 export { Tabs } from './Disclosure/Tabs/Tabs'
 export { Alert } from './Feedback/Alert/Alert'

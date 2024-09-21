@@ -4,6 +4,7 @@ export { SpeechBubbleButton } from './Form/SpeechBubbleButton/SpeechBubbleButton
 export { Checkbox } from './Form/Checkbox/Checkbox'
 export { Editable } from './Form/Editable/Editable'
 export { Input } from './Form/Input/Input'
+export { Radio } from './Form/Radio/Radio'
 export { Accordion } from './Disclosure/Accordion/Accordion'
 export { Tabs } from './Disclosure/Tabs/Tabs'
 export { Alert } from './Feedback/Alert/Alert'

@@ -1,52 +1,52 @@
-import type { Meta, StoryObj } from "@storybook/react";
-
-import { Checkbox } from "./Checkbox";
+// Checkbox.stories.tsx
 import React, { useState } from "react";
+import { Checkbox } from "./Checkbox";
 
-const meta: Meta<typeof Checkbox> = {
+export default {
   component: Checkbox,
 };
 
-export default meta;
-
-type Story = StoryObj<typeof Checkbox>;
-
-export const Default: Story = {
-  args: {
-    label: "Checkbox!",
-  },
-  render: (args) => {
-    const [checked, setChecked] = useState(false);
-
-    return (
-      <Checkbox
-        {...args}
-        checked
-        onChange={() => {
-          setChecked(!checked);
-        }}
-      />
-    );
-  },
+export const Default = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={setChecked}
+      label="Default Checkbox"
+    />
+  );
 };
 
-export const CustomColours: Story = {
-  args: {
-    label: "Checkbox!",
-    fromColor: "pink",
-    toColor: "lightblue",
-  },
-  render: (args) => {
-    const [checked, setChecked] = useState(false);
+export const DisabledChecked = () => (
+  <Checkbox
+    checked={true}
+    onChange={() => {}}
+    disabled={true}
+    label="Disabled Checked Checkbox"
+  />
+);
 
-    return (
-      <Checkbox
-        {...args}
-        checked
-        onChange={() => {
-          setChecked(!checked);
-        }}
-      />
-    );
-  },
+export const CustomColors = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={setChecked}
+      label="Custom Colors"
+      fromColor="#00F260"
+      toColor="#0575E6"
+    />
+  );
+};
+
+export const CustomSize = () => {
+  const [checked, setChecked] = useState(false);
+  return (
+    <Checkbox
+      checked={checked}
+      onChange={setChecked}
+      label="Large Checkbox"
+      size={40}
+    />
+  );
 };

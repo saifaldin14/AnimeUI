@@ -1,0 +1,19 @@
+import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{r as w}from"./index-DJO9vBfz.js";const v={success:{background:"bg-green-500",icon:e.jsx("svg",{className:"w-6 h-6 text-white mr-2",fill:"none",stroke:"currentColor",viewBox:"0 0 24 24",children:e.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M5 13l4 4L19 7"})}),text:"text-white"},error:{background:"bg-red-500",icon:e.jsx("svg",{className:"w-6 h-6 text-white mr-2",fill:"none",stroke:"currentColor",viewBox:"0 0 24 24",children:e.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M6 18L18 6M6 6l12 12"})}),text:"text-white"},warning:{background:"bg-yellow-500",icon:e.jsx("svg",{className:"w-6 h-6 text-black mr-2",fill:"none",stroke:"currentColor",viewBox:"0 0 24 24",children:e.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M13 16h-1v-4h-1m0-4h.01"})}),text:"text-black"},info:{background:"bg-blue-500",icon:e.jsx("svg",{className:"w-6 h-6 text-white mr-2",fill:"none",stroke:"currentColor",viewBox:"0 0 24 24",children:e.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",strokeWidth:2,d:"M13 16h-1v-4h-1m0-4h.01"})}),text:"text-white"}},g=({message:p,type:x="info",onClose:s,duration:a=3e3,customColors:r})=>{w.useEffect(()=>{const f=setTimeout(s,a);return()=>clearTimeout(f)},[s,a]);const o=v[x],h=r?{backgroundColor:r.background,color:r.text}:{},k=r?{color:r.icon}:void 0;return e.jsxs("div",{className:`fixed bottom-4 right-4 max-w-sm w-full flex items-center p-4 mb-4 animate-slideIn rounded-md shadow-md ${r?"":`${o.background} ${o.text}`}`,style:h,children:[e.jsxs("div",{className:"flex items-center",children:[r?e.jsx("svg",{className:"w-6 h-6 mr-2",fill:"currentColor",viewBox:"0 0 20 20",style:k,children:e.jsx("path",{fillRule:"evenodd",d:"M10 18a8 8 0 100-16 8 8 0 000 16zm1-11V9H9V7h2zm0 4v4H9v-4h2z",clipRule:"evenodd"})}):o.icon,e.jsx("p",{className:"font-anime",children:p})]}),e.jsx("button",{onClick:s,className:"absolute top-2 right-2 text-xl leading-none focus:outline-none",children:"×"})]})};g.__docgenInfo={description:"",methods:[],displayName:"Toast",props:{message:{required:!0,tsType:{name:"string"},description:""},type:{required:!1,tsType:{name:"union",raw:'"success" | "error" | "warning" | "info"',elements:[{name:"literal",value:'"success"'},{name:"literal",value:'"error"'},{name:"literal",value:'"warning"'},{name:"literal",value:'"info"'}]},description:"",defaultValue:{value:'"info"',computed:!1}},onClose:{required:!0,tsType:{name:"signature",type:"function",raw:"() => void",signature:{arguments:[],return:{name:"void"}}},description:""},duration:{required:!1,tsType:{name:"number"},description:"",defaultValue:{value:"3000",computed:!1}},customColors:{required:!1,tsType:{name:"signature",type:"object",raw:`{
+  background: string;
+  text: string;
+  icon: string;
+}`,signature:{properties:[{key:"background",value:{name:"string",required:!0}},{key:"text",value:{name:"string",required:!0}},{key:"icon",value:{name:"string",required:!0}}]}},description:""}}};const j={component:g},t={args:{message:"Hey this is a warning!",type:"warning"}},n={args:{message:"Hey, use custom colours",customColors:{text:"orange",background:"black",icon:"yellow"}}};var i,c,l;t.parameters={...t.parameters,docs:{...(i=t.parameters)==null?void 0:i.docs,source:{originalSource:`{
+  args: {
+    message: "Hey this is a warning!",
+    type: "warning"
+  }
+}`,...(l=(c=t.parameters)==null?void 0:c.docs)==null?void 0:l.source}}};var u,d,m;n.parameters={...n.parameters,docs:{...(u=n.parameters)==null?void 0:u.docs,source:{originalSource:`{
+  args: {
+    message: "Hey, use custom colours",
+    customColors: {
+      text: "orange",
+      background: "black",
+      icon: "yellow"
+    }
+  }
+}`,...(m=(d=n.parameters)==null?void 0:d.docs)==null?void 0:m.source}}};const L=["Default","CustomColours"];export{n as CustomColours,t as Default,L as __namedExportsOrder,j as default};

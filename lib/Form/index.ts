@@ -4,4 +4,5 @@ export * from "./Editable/Editable";
 export * from "./Input/Input";
 export * from "./Radio/Radio";
 export * from "./Select/Select";
+export * from "./Slider/Slider";
 export * from "./SpeechBubbleButton/SpeechBubbleButton";

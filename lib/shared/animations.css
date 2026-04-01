@@ -149,6 +149,103 @@
   animation: gentleRotate 8s linear infinite;
 }
 
+.anime-overlay-backdrop {
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.14), transparent 30%),
+    rgba(20, 9, 34, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.anime-manga-panel,
+.anime-manga-paper,
+.anime-manga-chip {
+  position: relative;
+  isolation: isolate;
+}
+
+.anime-manga-panel {
+  color: var(--anime-panel-text, #ffffff);
+  border: 3px solid var(--anime-ink, #241335);
+  border-radius: var(--anime-panel-radius, 1.5rem);
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.24) 0 7%, transparent 7.4%),
+    radial-gradient(circle at 82% 16%, rgba(255, 244, 190, 0.24) 0 8%, transparent 8.5%),
+    linear-gradient(135deg, var(--anime-panel-from, #ec4899), var(--anime-panel-to, #a855f7));
+  box-shadow:
+    0 18px 32px rgba(15, 23, 42, 0.24),
+    var(--anime-shadow-offset, 6px) var(--anime-shadow-offset, 6px) 0 var(--anime-ink, #241335);
+}
+
+.anime-manga-panel::before,
+.anime-manga-paper::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: calc(var(--anime-panel-radius, 1.5rem) - 8px);
+  border: 1.5px solid var(--anime-panel-accent, rgba(255, 255, 255, 0.26));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.anime-manga-paper {
+  color: var(--anime-panel-text, #241335);
+  border: 3px solid var(--anime-ink, #241335);
+  border-radius: var(--anime-panel-radius, 1.35rem);
+  background:
+    radial-gradient(circle at 2px 2px, var(--anime-panel-tone, rgba(236, 72, 153, 0.08)) 1.2px, transparent 0),
+    linear-gradient(180deg, var(--anime-paper, #fff7fb), #ffffff);
+  background-size: 14px 14px, 100% 100%;
+  box-shadow:
+    0 16px 28px rgba(15, 23, 42, 0.14),
+    var(--anime-shadow-offset, 4px) var(--anime-shadow-offset, 4px) 0 var(--anime-ink, #241335);
+}
+
+.anime-manga-chip {
+  color: var(--anime-panel-text, #ffffff);
+  border: 2px solid var(--anime-ink, #241335);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 22% 26%, rgba(255, 255, 255, 0.22) 0 6%, transparent 6.3%),
+    linear-gradient(135deg, var(--anime-panel-from, #ec4899), var(--anime-panel-to, #a855f7));
+  box-shadow: 3px 3px 0 var(--anime-ink, #241335);
+}
+
+.anime-manga-pressable {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.anime-manga-pressable:hover {
+  transform: translate(-2px, -2px);
+  filter: saturate(1.08);
+  box-shadow:
+    0 22px 34px rgba(15, 23, 42, 0.28),
+    calc(var(--anime-shadow-offset, 6px) + 2px) calc(var(--anime-shadow-offset, 6px) + 2px) 0 var(--anime-ink, #241335);
+}
+
+.anime-manga-pressable:active {
+  transform: translate(1px, 1px);
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.2),
+    calc(var(--anime-shadow-offset, 6px) - 2px) calc(var(--anime-shadow-offset, 6px) - 2px) 0 var(--anime-ink, #241335);
+}
+
+.anime-manga-pressable:disabled,
+.anime-manga-pressable[aria-disabled="true"] {
+  filter: grayscale(0.12);
+  opacity: 0.7;
+  transform: none;
+}
+
+.anime-screen-tone {
+  background:
+    radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.22) 1px, transparent 0),
+    transparent;
+  background-size: 12px 12px;
+}
+
 /* ─── Animation Delays ─── */
 .anime-delay-100 { animation-delay: 100ms; }
 .anime-delay-200 { animation-delay: 200ms; }
@@ -169,7 +266,8 @@
   .anime-glow,
   .anime-text-glow,
   .anime-scale-pulse,
-  .anime-rotate {
+  .anime-rotate,
+  .anime-manga-pressable {
     animation: none;
   }
   .anime-fade-in,

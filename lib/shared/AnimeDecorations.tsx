@@ -31,9 +31,11 @@ export const FloatingStars: React.FC<FloatingStarsProps> = ({
       {positions.slice(0, count).map((pos, i) => (
         <div
           key={i}
-          className={`absolute ${pos.size} rounded-full anime-twinkle ${pos.delay}`}
+          className={`absolute ${pos.size} anime-twinkle ${pos.delay}`}
           style={{
-            backgroundColor: color,
+            background: `radial-gradient(circle, ${color} 0 42%, transparent 44%)`,
+            clipPath: 'polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%)',
+            filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.55))',
             top: pos.top,
             left: pos.left,
             right: pos.right,
@@ -65,9 +67,11 @@ export const Sparkles: React.FC<SparklesProps> = ({
       {positions.slice(0, count).map((pos, i) => (
         <div
           key={i}
-          className={`absolute ${pos.size} rounded-full animate-ping ${pos.delay}`}
+          className={`absolute ${pos.size} anime-sparkle ${pos.delay}`}
           style={{
-            backgroundColor: color,
+            background: `linear-gradient(135deg, ${color}, #fff7cc)`,
+            clipPath: 'polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)',
+            boxShadow: `0 0 12px ${color}88`,
             top: pos.top,
             left: pos.left,
             right: pos.right,
@@ -111,12 +115,15 @@ export const FloatingHearts: React.FC<FloatingHeartsProps> = ({
         >
           <div
             className="absolute inset-0 rounded-full"
-            style={{ backgroundColor: color }}
+            style={{
+              background: `linear-gradient(135deg, ${color}, #ffffff)`,
+              boxShadow: `0 0 10px ${color}55`,
+            }}
           />
           <div
             className="absolute inset-0 rounded-full"
             style={{
-              backgroundColor: color,
+              background: `linear-gradient(135deg, ${color}, #ffffff)`,
               transform: 'translateX(-100%)',
             }}
           />

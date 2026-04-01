@@ -1,0 +1,181 @@
+/*
+ * AnimeUI Shared Animations
+ *
+ * All keyframe animations used across the library are defined here once.
+ * Components reference these animation classes instead of defining inline <style> tags.
+ */
+
+/* ─── Twinkle: Stars that pulse in opacity and scale ─── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* ─── Float: Gentle vertical bobbing motion ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ─── Float with rotation (for hearts) ─── */
+@keyframes floatRotate {
+  0%, 100% { transform: translateY(0) rotate(45deg); }
+  50% { transform: translateY(-20px) rotate(45deg); }
+}
+
+/* ─── Shimmer: A sliding highlight effect ─── */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Sparkle: Quick flash ─── */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* ─── Anime Bounce ─── */
+@keyframes animeBounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-8px); }
+  50% { transform: translateY(0); }
+  75% { transform: translateY(-4px); }
+}
+
+/* ─── Fade In ─── */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* ─── Slide Up ─── */
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Slide In from Right ─── */
+@keyframes slideIn {
+  0% { opacity: 0; transform: translateX(100%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Slide In from Left ─── */
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-100%); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Glow Pulse ─── */
+@keyframes animeGlow {
+  0%, 100% { box-shadow: 0 0 5px var(--anime-glow, rgba(236, 72, 153, 0.4)); }
+  50% { box-shadow: 0 0 20px var(--anime-glow, rgba(236, 72, 153, 0.8)), 0 0 40px var(--anime-glow, rgba(236, 72, 153, 0.4)); }
+}
+
+/* ─── Text Glow ─── */
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 5px var(--anime-glow, rgba(236, 72, 153, 0.4)); }
+  50% { text-shadow: 0 0 20px var(--anime-glow, rgba(236, 72, 153, 0.8)), 0 0 40px var(--anime-glow, rgba(236, 72, 153, 0.4)); }
+}
+
+/* ─── Scale Pulse ─── */
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ─── Rotate ─── */
+@keyframes gentleRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ─── Animation Utility Classes ─── */
+.anime-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+.anime-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.anime-float-rotate {
+  animation: floatRotate 3s ease-in-out infinite;
+}
+
+.anime-shimmer {
+  animation: shimmer 2s linear infinite;
+  background-size: 200% auto;
+}
+
+.anime-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.anime-bounce {
+  animation: animeBounce 1s ease-in-out infinite;
+}
+
+.anime-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.anime-slide-up {
+  animation: slideUp 0.4s ease-out;
+}
+
+.anime-slide-in {
+  animation: slideIn 0.4s ease-out;
+}
+
+.anime-slide-in-left {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.anime-glow {
+  animation: animeGlow 2s ease-in-out infinite;
+}
+
+.anime-text-glow {
+  animation: textGlow 2s ease-in-out infinite;
+}
+
+.anime-scale-pulse {
+  animation: scalePulse 2s ease-in-out infinite;
+}
+
+.anime-rotate {
+  animation: gentleRotate 8s linear infinite;
+}
+
+/* ─── Animation Delays ─── */
+.anime-delay-100 { animation-delay: 100ms; }
+.anime-delay-200 { animation-delay: 200ms; }
+.anime-delay-300 { animation-delay: 300ms; }
+.anime-delay-400 { animation-delay: 400ms; }
+.anime-delay-500 { animation-delay: 500ms; }
+.anime-delay-700 { animation-delay: 700ms; }
+.anime-delay-1000 { animation-delay: 1000ms; }
+
+/* ─── Reduced Motion Support ─── */
+@media (prefers-reduced-motion: reduce) {
+  .anime-twinkle,
+  .anime-float,
+  .anime-float-rotate,
+  .anime-shimmer,
+  .anime-sparkle,
+  .anime-bounce,
+  .anime-glow,
+  .anime-text-glow,
+  .anime-scale-pulse,
+  .anime-rotate {
+    animation: none;
+  }
+  .anime-fade-in,
+  .anime-slide-up,
+  .anime-slide-in,
+  .anime-slide-in-left {
+    animation-duration: 0.01ms;
+  }
+}

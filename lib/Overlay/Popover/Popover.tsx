@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { getAnimeVars } from "../../shared";
 
 type PopoverProps = {
   content: React.ReactNode;
@@ -23,6 +24,12 @@ export const Popover: React.FC<PopoverProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const popoverRef = useRef<HTMLDivElement>(null);
+  const mangaVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.35rem",
+  });
 
   const openPopover = () => setIsOpen(true);
   const closePopover = () => setIsOpen(false);
@@ -63,39 +70,19 @@ export const Popover: React.FC<PopoverProps> = ({
       </div>
       {isOpen && (
         <div
-          className="absolute z-10 mt-2 w-64 rounded-lg shadow-lg overflow-hidden anime-fade-in"
-          style={{
-            background: `linear-gradient(to bottom right, ${fromColor}, ${toColor})`,
-            color: textColor,
-          }}
+          className="anime-manga-panel absolute z-10 mt-4 w-64 overflow-hidden anime-fade-in"
+          style={mangaVars}
           role="tooltip"
         >
           {/* Upward Chevron */}
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2" aria-hidden="true">
+          <div className="absolute -top-3 left-1/2 -translate-x-1/2 transform" aria-hidden="true">
             <svg width="20" height="10" viewBox="0 0 20 10" fill="none">
-              <path d="M0 10L10 0L20 10H0Z" fill={fromColor} />
+              <path d="M0 10L10 0L20 10H0Z" fill={fromColor} stroke="#241335" strokeWidth="1.5" />
             </svg>
           </div>
-          {/* Anime Vibe Elements */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            {/* Floating Stars */}
-            <div className="absolute top-2 left-4 w-2 h-2 bg-white rounded-full anime-twinkle"></div>
-            <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full anime-twinkle anime-delay-200"></div>
-            {/* Sparkles */}
-            <div className="absolute bottom-2 left-6 w-3 h-3 bg-yellow-300 rounded-full animate-ping"></div>
-            <div className="absolute bottom-4 right-6 w-2 h-2 bg-yellow-300 rounded-full animate-ping anime-delay-300"></div>
-            {/* Floating Hearts */}
-            <div className="absolute top-1/3 left-2 w-4 h-4 transform rotate-45 anime-float-rotate">
-              <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
-              <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
-            </div>
-            <div className="absolute bottom-1/4 right-4 w-3 h-3 transform rotate-45 anime-float-rotate anime-delay-500">
-              <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
-              <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
-            </div>
-          </div>
+          <div className="absolute inset-0 anime-screen-tone opacity-40" aria-hidden="true" />
 
-          <div className="relative p-4 font-anime z-10 mt-4">{content}</div>
+          <div className="relative z-10 mt-2 p-4 font-medium">{content}</div>
         </div>
       )}
     </div>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { animeStatusAccents, getAnimeVars } from "../../shared";
 
 type ToastType = "success" | "error" | "warning" | "info";
 
@@ -109,6 +110,13 @@ export const Toast: React.FC<AnimeToastProps> = ({
   }, [onClose, duration]);
 
   const defaultStyles = toastTypeStyles[type];
+  const [fromColor, toColor] = animeStatusAccents[type];
+  const mangaVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor: customColors?.text ?? "#ffffff",
+    radius: "1.35rem",
+  });
 
   const containerStyle = customColors
     ? {
@@ -121,11 +129,12 @@ export const Toast: React.FC<AnimeToastProps> = ({
 
   return (
     <div
-      className={`fixed bottom-4 right-4 max-w-sm w-full flex items-center p-4 mb-4 animate-slideIn rounded-md shadow-md ${
-        !customColors ? `${defaultStyles.background} ${defaultStyles.text}` : ""
+      className={`anime-manga-panel fixed bottom-4 right-4 mb-4 flex w-full max-w-sm items-center overflow-hidden p-4 animate-slideIn ${
+        !customColors ? `${defaultStyles.text}` : ""
       }`}
-      style={containerStyle}
+      style={{ ...mangaVars, ...containerStyle }}
     >
+      <div className="absolute inset-0 anime-screen-tone opacity-45" aria-hidden="true" />
       <div className="flex items-center">
         {customColors ? (
           <svg
@@ -143,11 +152,11 @@ export const Toast: React.FC<AnimeToastProps> = ({
         ) : (
           defaultStyles.icon
         )}
-        <p className="font-anime">{message}</p>
+        <p className="relative z-10 font-semibold uppercase tracking-[0.08em]">{message}</p>
       </div>
       <button
         onClick={onClose}
-        className="absolute top-2 right-2 text-xl leading-none focus:outline-none"
+        className="absolute right-3 top-3 z-10 text-xl leading-none focus:outline-none"
       >
         &times;
       </button>

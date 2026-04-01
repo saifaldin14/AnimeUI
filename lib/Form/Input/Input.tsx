@@ -1,4 +1,5 @@
 import React from "react";
+import { animeSparkleClipPath, getAnimePaperVars } from "../../shared";
 
 type InputProps = {
   value: string;
@@ -22,13 +23,20 @@ export const Input: React.FC<InputProps> = ({
   disabled = false,
   fromColor = "#ec4899", // Default pink-500
   toColor = "#a855f7", // Default purple-500
-  textColor = "#fff", // Default black
+  textColor = "#241335",
   error = false,
   errorMessage = "",
   type = "text",
   className = "",
   style,
 }) => {
+  const mangaVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.25rem",
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!disabled) {
       onChange(e.target.value);
@@ -36,7 +44,11 @@ export const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <div className={`relative ${className}`} style={style}>
+    <div
+      className={`anime-manga-paper relative overflow-hidden ${className}`}
+      style={{ ...mangaVars, ...style }}
+    >
+      <div className="absolute inset-0 anime-screen-tone opacity-40" aria-hidden="true" />
       <input
         type={type}
         value={value}
@@ -46,27 +58,44 @@ export const Input: React.FC<InputProps> = ({
         aria-disabled={disabled}
         aria-invalid={error}
         aria-describedby={error && errorMessage ? "input-error" : undefined}
-        className={`w-full px-4 py-2 rounded-md focus:outline-none transition-all duration-300 ${
+        className={`relative z-10 w-full bg-transparent px-4 py-3 pr-8 font-semibold placeholder:text-[#7b6a87] focus:outline-none transition-all duration-300 ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
-        } ${error ? "border border-red-500" : ""}`}
-        style={{
-          background: `linear-gradient(135deg, ${fromColor}, ${toColor})`,
-          color: textColor,
-        }}
+        }`}
+        style={{ color: textColor }}
       />
       {/* Anime Vibe Elements */}
       {!disabled && (
         <>
-          <div className="absolute -top-2 -right-2 animate-ping">
-            <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
+          <div className="absolute right-4 top-3">
+            <div
+              className="h-3 w-3 anime-sparkle"
+              style={{
+                background: "linear-gradient(135deg, #fbbf24, #fff7cc)",
+                clipPath: animeSparkleClipPath,
+              }}
+            ></div>
           </div>
-          <div className="absolute -bottom-2 -left-2 animate-ping delay-200">
-            <div className="w-1.5 h-1.5 bg-yellow-300 rounded-full"></div>
-          </div>
+          <div className="absolute bottom-3 left-4 h-1.5 w-10 rounded-full bg-gradient-to-r from-pink-300/60 to-transparent"></div>
+          <div className="absolute left-4 top-0 h-1 w-20 rounded-full bg-gradient-to-r from-white/80 to-transparent"></div>
+          <div className="absolute bottom-3 right-4 h-2 w-2 rounded-full bg-pink-300/60"></div>
+          <div className="absolute bottom-4 right-7 h-1.5 w-1.5 rounded-full bg-yellow-300/70"></div>
         </>
       )}
+      {error && (
+        <div
+          className="pointer-events-none absolute inset-0 rounded-[inherit]"
+          style={{ boxShadow: "inset 0 0 0 3px rgba(239, 68, 68, 0.65)" }}
+          aria-hidden="true"
+        />
+      )}
       {error && errorMessage && (
-        <p id="input-error" className="mt-1 text-red-500 text-sm font-anime" role="alert">{errorMessage}</p>
+        <p
+          id="input-error"
+          className="relative z-10 px-4 pb-3 text-sm font-semibold text-red-600"
+          role="alert"
+        >
+          {errorMessage}
+        </p>
       )}
     </div>
   );

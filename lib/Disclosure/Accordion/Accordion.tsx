@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getAnimePaperVars, getAnimeVars } from "../../shared";
 
 type AccordionItem = {
   title: string;
@@ -26,21 +27,28 @@ export const Accordion: React.FC<AnimeAccordionProps> = ({
     <div className="w-full max-w-md mx-auto space-y-4">
       {items.map((item, index) => {
         const isActive = activeIndex === index;
-        const gradientStyle = {
-          backgroundImage: `linear-gradient(to right, ${fromColor}, ${toColor})`,
-        };
+        const panelVars = getAnimeVars({
+          fromColor,
+          toColor,
+          textColor: "#ffffff",
+          radius: "1.3rem",
+          shadowOffset: "4px",
+        });
+        const paperVars = getAnimePaperVars({
+          fromColor,
+          toColor,
+          radius: "1.2rem",
+        });
 
         return (
-          <div
-            key={index}
-            className="border border-gray-300 rounded-lg overflow-hidden"
-          >
+          <div key={index} className="space-y-2">
             <button
               onClick={() => toggleItem(index)}
-              style={gradientStyle}
-              className="w-full flex items-center justify-between p-4 text-white font-bold text-left focus:outline-none"
+              style={panelVars}
+              className="anime-manga-panel anime-manga-pressable w-full flex items-center justify-between p-4 text-left font-bold uppercase tracking-[0.14em] text-white focus:outline-none"
+              aria-expanded={isActive}
             >
-              <span className="font-anime">{item.title}</span>
+              <span>{item.title}</span>
               <svg
                 className={`w-6 h-6 transition-transform duration-300 ${
                   isActive ? "transform rotate-180" : ""
@@ -58,8 +66,11 @@ export const Accordion: React.FC<AnimeAccordionProps> = ({
               </svg>
             </button>
             {isActive && (
-              <div className="p-4 bg-white text-black animate-fadeIn">
-                <p className="font-anime text-base">{item.content}</p>
+              <div
+                className="anime-manga-paper animate-fadeIn px-5 py-4 text-[#241335]"
+                style={paperVars}
+              >
+                <p className="text-base font-medium leading-relaxed">{item.content}</p>
               </div>
             )}
           </div>

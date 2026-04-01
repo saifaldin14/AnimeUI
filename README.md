@@ -1,6 +1,6 @@
 # AnimeUI
 
-AnimeUI is a unique frontend component library specifically made for React applications. Designed with a distinct and cute anime aesthetic, AnimeUI brings the charm and dynamic energy of anime into your applications! Whether you're building a portfolio, a gaming platform, or any application, AnimeUI provides the perfect set of tools to infuse your project with a pretty dang cool anime vibe.
+AnimeUI is a unique frontend component library specifically made for React applications. Designed with a bold manga-inspired aesthetic, AnimeUI brings the charm and dynamic energy of anime into your applications through inked panel surfaces, playful screentone textures, and expressive decorative accents. Whether you're building a portfolio, a gaming platform, or any application, AnimeUI provides the perfect set of tools to infuse your project with a pretty dang cool anime vibe.
 
 ## Table of Contents
 
@@ -149,7 +149,7 @@ Removable tags/chips for categorization. Includes optional close button with smo
 ```
 
 #### Tooltip
-Information popup shown on hover/focus. Supports 4 positions (top, bottom, left, right) with animated arrow.
+Information popup shown on hover/focus. Uses a manga-panel surface with inked borders, screentone texture, and an animated arrow. Supports 4 positions (top, bottom, left, right).
 
 ```tsx
 <Tooltip content="Hello!" position="top">
@@ -160,7 +160,7 @@ Information popup shown on hover/focus. Supports 4 positions (top, bottom, left,
 ### Disclosure
 
 #### Accordion
-Collapsible sections with smooth expand/collapse animations. Displays a title on a gradient header and content below. One section open at a time.
+Collapsible sections with smooth expand/collapse animations. Displays each title as a manga-style action bar with ink borders and comic-panel content below. One section open at a time.
 
 ![Accordion](https://github.com/user-attachments/assets/11b7ba07-c6b6-4acd-b55b-dd65c961b708)
 
@@ -174,7 +174,7 @@ Collapsible sections with smooth expand/collapse animations. Displays a title on
 ```
 
 #### Tabs
-Tabbed content switcher with gradient background, animated indicator line, and decorative floating elements (stars, sparkles, hearts).
+Tabbed content switcher with manga-chip tab buttons, panel-framed content, and decorative floating elements (stars, sparkles, hearts).
 
 ![Tabs](https://github.com/user-attachments/assets/e0d7c3d5-5760-4950-8f42-2bda43c2e6b7)
 
@@ -190,7 +190,7 @@ Tabbed content switcher with gradient background, animated indicator line, and d
 ### Display
 
 #### List
-Gradient-styled list with clickable items, optional icons, and anime decorations. Uses "Press Start 2P" font by default for a retro feel.
+Stylized list with clickable items, optional icons, and anime decorations. Uses "Press Start 2P" font by default for a retro feel.
 
 ![List](https://github.com/user-attachments/assets/49345ba7-d586-4fb2-9d0c-b1edd91f3a55)
 
@@ -223,7 +223,7 @@ Data table with striped/hoverable rows, gradient header, and anime decorations. 
 ### Feedback
 
 #### Alert
-Alert messages with 4 types (success, error, warning, info). Includes optional close button and custom color support.
+Alert messages with 4 types (success, error, warning, info). Rendered on a manga-paper surface with ink borders, status accents, optional close button, and custom color support.
 
 ![Alert](https://github.com/user-attachments/assets/bdf8886c-4ea3-4b1f-a966-a9e2e4710fd2)
 
@@ -259,7 +259,7 @@ Loading placeholder with a kawaii anime face. Displays animated skeleton with co
 ```
 
 #### Toast
-Temporary notification shown at bottom-right. Auto-dismisses after a duration. Supports 4 types with icons.
+Temporary notification shown at bottom-right. Uses a manga-panel surface with status accents, auto-dismisses after a duration, and supports 4 types with icons.
 
 ```tsx
 <Toast message="Success!" type="success" onClose={() => {}} duration={3000} />
@@ -268,7 +268,7 @@ Temporary notification shown at bottom-right. Auto-dismisses after a duration. S
 ### Form
 
 #### Button
-Gradient button with animated offset effect on hover. White border and gradient fill.
+Pressable manga-panel button with thick ink borders, offset comic shadow, and animated hover/press states.
 
 ![Button](https://github.com/user-attachments/assets/5b62359e-57a5-4608-8e72-7277e044b4cf)
 
@@ -277,7 +277,7 @@ Gradient button with animated offset effect on hover. White border and gradient 
 ```
 
 #### Checkbox
-Custom checkbox with gradient fill when checked, optional label, and animated decorations.
+Custom checkbox with a sharp manga-style frame, paper surface, checked-state accent fill, optional label, and animated decorations.
 
 ![Checkbox](https://github.com/user-attachments/assets/c7b5051d-06ef-4dba-9a43-ddeaea4bf210)
 
@@ -286,14 +286,14 @@ Custom checkbox with gradient fill when checked, optional label, and animated de
 ```
 
 #### Editable
-Click-to-edit text field. Shows gradient text in display mode, switches to an input on click. Saves on blur or Enter key.
+Click-to-edit text field. Shows expressive anime text in display mode, switches to an input on click, and saves on blur or Enter key.
 
 ```tsx
 <Editable value="Click to edit" onChange={(val) => {}} />
 ```
 
 #### Input
-Text input with gradient background, optional error state with message, and animated corner decorations.
+Text input on a manga-paper surface with ink borders, optional error state with message, and animated corner decorations.
 
 ![Input](https://github.com/user-attachments/assets/ac3dbc20-fba6-414a-9ab8-1b79fe9fe41f)
 
@@ -302,7 +302,7 @@ Text input with gradient background, optional error state with message, and anim
 ```
 
 #### Radio
-Radio button group with gradient-styled options. Only one option selectable at a time. Supports disabled options.
+Radio button group with manga-paper options and clear selected-state accents. Only one option selectable at a time. Supports disabled options.
 
 ![Radio](https://github.com/user-attachments/assets/227e6df5-fa0a-401e-bda4-399aa9aefe3e)
 
@@ -319,7 +319,7 @@ Radio button group with gradient-styled options. Only one option selectable at a
 ```
 
 #### Select
-Dropdown select component with gradient button and white dropdown menu. Includes floating anime decorations.
+Dropdown select component with a manga-paper trigger and matching comic-panel menu. Includes floating anime decorations.
 
 ![Select](https://github.com/user-attachments/assets/4f2785e3-21d0-467e-bab5-c3c3d8acd7b3)
 
@@ -336,7 +336,7 @@ Dropdown select component with gradient button and white dropdown menu. Includes
 ```
 
 #### Slider
-Range slider with gradient track fill and animated floating decorations (sparkle and heart).
+Range slider with colorful track fill and animated floating decorations (sparkle and heart).
 
 ![Slider](https://github.com/user-attachments/assets/e0a44f73-d075-4183-bea9-e496088d73cb)
 
@@ -356,7 +356,7 @@ Button styled as a speech bubble with optional tail (pointer) on left, right, or
 ### Layout
 
 #### Card
-Container component with gradient border and configurable variants (default, glass, neon, flat). Supports title, footer, and optional decorations.
+Container component with manga-panel and manga-paper variants plus configurable `default`, `glass`, `neon`, and `flat` treatments. Supports title, footer, and optional decorations.
 
 ```tsx
 <Card title="My Card" variant="glass" hoverable decorations>
@@ -407,7 +407,7 @@ Breadcrumb navigation showing page hierarchy. Supports links and current page in
 ```
 
 #### Navbar
-Top navigation bar with brand name, menu items, action buttons, and mobile responsive hamburger menu. Supports fixed positioning with backdrop blur.
+Top navigation bar with brand name, menu items, action buttons, and mobile responsive hamburger menu. Uses manga panel/chip styling and supports fixed positioning with backdrop blur.
 
 ```tsx
 <Navbar
@@ -466,7 +466,7 @@ Dropdown menu component with gradient background and menu items. Each item suppo
 ```
 
 #### Modal
-Centered modal dialog with dark overlay. Includes close button and keyboard Escape support with floating anime decorations.
+Centered modal dialog with a dark overlay and manga-panel framing. Includes close button, keyboard Escape support, and floating anime decorations.
 
 ![Modal](https://github.com/user-attachments/assets/aace128d-dca3-4710-bb51-23bf0309d73c)
 
@@ -477,7 +477,7 @@ Centered modal dialog with dark overlay. Includes close button and keyboard Esca
 ```
 
 #### Popover
-Flexible popover component triggered by click or hover. Shows above trigger with chevron pointer and floating decorations.
+Flexible popover component triggered by click or hover. Renders as a manga panel above the trigger with a chevron pointer and floating decorations.
 
 ```tsx
 <Popover content="Popover content" trigger="click">
@@ -504,12 +504,12 @@ Flexible text component that can render as `p`, `span`, or `div`. Supports gradi
 ## Key Features
 
 ### Anime-Inspired Aesthetics
-- **Vibrant Gradients** — Smooth and eye-catching gradient backgrounds that transition seamlessly, reminiscent of anime art styles
-- **Cute Animations** — Playful animations such as twinkling stars, floating hearts, and gentle glows to bring components to life
+- **Manga Panel Surfaces** — Inked borders, offset shadows, and comic-panel framing give core primitives a punchy anime feel
+- **Screentone & Sparkles** — Halftone-like paper textures, stars, hearts, and sparkles add playful motion and visual depth
 - **Custom Fonts** — Anime-inspired fonts like "Press Start 2P" to enhance the thematic consistency across your application
 
 ### Customization & Flexibility
-- **Color Schemes** — Easily customize gradient colors (`fromColor`/`toColor`), text colors, and other stylistic elements to match your palette
+- **Color Schemes** — Easily customize panel colors (`fromColor`/`toColor`), text colors, and other stylistic elements to match your palette
 - **Size Adjustments** — Modify component sizes to fit various design requirements without compromising the anime aesthetic
 - **Animation Control** — Toggle animations on or off and adjust their intensity to suit the desired user experience
 - **Accessibility** — Components are built with accessibility in mind, ensuring they are usable and navigable for all users
@@ -558,7 +558,7 @@ lib/
 ├── Overlay/          # AlertDialog, Drawer, Menu, Modal, Popover
 ├── Theme/            # AnimeThemeProvider, design tokens
 ├── Typography/       # Heading, Text
-├── shared/           # Decorations & animations
+├── shared/           # Decorations, animations, and manga surface utilities
 ├── main.ts           # Library entry point
 └── tailwind.css      # Styling
 ```
@@ -566,4 +566,3 @@ lib/
 ## License
 
 See [LICENSE](LICENSE) for details.
-

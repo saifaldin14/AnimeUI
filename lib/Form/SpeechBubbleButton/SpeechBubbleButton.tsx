@@ -1,4 +1,5 @@
 import React from "react";
+import { animeInk } from "../../shared";
 
 type TailPosition = "left" | "right" | "none";
 
@@ -23,35 +24,41 @@ export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   className = "",
   style,
 }) => {
+  const resolvedTailColor = tailColor || backgroundColor;
   const tailStyles =
     tailPosition !== "none"
       ? {
-          content: "''",
           position: "absolute" as "absolute",
-          top: "50%",
-          transform: "translateY(-50%)",
-          borderWidth: "8px",
-          borderStyle: "solid",
-          borderColor: "transparent",
+          bottom: "-10px",
+          width: "18px",
+          height: "18px",
+          background: `linear-gradient(180deg, ${resolvedTailColor}, #ffffff)`,
+          transform: "rotate(45deg)",
           ...(tailPosition === "left" && {
-            left: "0",
-            marginLeft: "-16px",
-            borderRightColor: tailColor || backgroundColor,
+            left: "1.5rem",
+            borderRight: `3px solid ${animeInk}`,
+            borderBottom: `3px solid ${animeInk}`,
           }),
           ...(tailPosition === "right" && {
-            right: "0",
-            marginRight: "-16px",
-            borderLeftColor: tailColor || backgroundColor,
+            right: "1.5rem",
+            borderTop: `3px solid ${animeInk}`,
+            borderLeft: `3px solid ${animeInk}`,
           }),
         }
       : {};
 
   return (
     <button
+      type="button"
       onClick={onClick}
       aria-label={text}
-      className={`relative px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${className}`}
-      style={{ backgroundColor, color: textColor, ...style }}
+      className={`anime-manga-paper anime-manga-pressable relative px-6 py-4 font-bold uppercase tracking-[0.18em] ${className}`}
+      style={{
+        color: textColor,
+        borderColor: animeInk,
+        background: `linear-gradient(180deg, ${backgroundColor}, #ffffff)`,
+        ...style,
+      }}
     >
       {text}
       {tailPosition !== "none" && <span style={tailStyles} />}

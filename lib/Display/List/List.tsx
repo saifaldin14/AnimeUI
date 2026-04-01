@@ -29,7 +29,7 @@ export const List: React.FC<ListProps> = ({
     <div
       className={`relative rounded-lg shadow-lg overflow-hidden ${className}`}
       style={{
-        background: `linear-gradient(to bottom right, ${fromColor}, ${toColor})`,
+        background: `linear-gradient(135deg, ${fromColor}, ${toColor})`,
         color: textColor,
         fontFamily: fontFamily,
         ...style,
@@ -41,7 +41,7 @@ export const List: React.FC<ListProps> = ({
           <li key={index} role="listitem">
             <button
               onClick={item.onClick}
-              className="w-full flex items-center px-4 py-3 hover:bg-opacity-75 transition-colors"
+              className="w-full flex items-center px-4 py-3 hover:bg-opacity-75 active:scale-[0.98] transition-colors"
             >
               {item.icon && <span className="mr-3" aria-hidden="true">{item.icon}</span>}
               <span>{item.text}</span>

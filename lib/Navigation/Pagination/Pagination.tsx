@@ -124,6 +124,7 @@ export const Pagination: React.FC<PaginationProps> = ({
     "inline-flex items-center justify-center",
     "w-10 h-10 rounded-lg text-sm font-medium",
     "transition-all duration-300",
+    "active:scale-[0.98]",
     "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900",
   ].join(" ");
 

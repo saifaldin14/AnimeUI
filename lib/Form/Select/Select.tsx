@@ -91,7 +91,7 @@ export const Select: React.FC<SelectProps> = ({
                 type="button"
                 role="option"
                 aria-selected={option.value === value}
-                className="w-full border-b border-[#241335]/10 px-4 py-3 text-left font-semibold uppercase tracking-[0.1em] transition-colors hover:bg-white/60"
+                className="w-full border-b border-[#241335]/10 px-4 py-3 text-left font-semibold uppercase tracking-[0.1em] transition-colors hover:bg-white/60 active:scale-[0.98]"
                 onClick={() => handleOptionClick(option.value)}
               >
                 {option.label}

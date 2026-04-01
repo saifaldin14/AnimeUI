@@ -58,7 +58,7 @@ export const Tag: React.FC<TagProps> = ({
           className={[
             "inline-flex items-center justify-center rounded-full shrink-0",
             "transition-colors duration-150",
-            "hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40",
+            "hover:bg-white/20 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/40",
             closeSizeClasses[size],
           ].join(" ")}
           style={{ color: textColor }}

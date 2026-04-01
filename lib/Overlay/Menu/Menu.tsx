@@ -45,7 +45,7 @@ export const Menu: React.FC<MenuProps> = ({
           <li key={index} role="none">
             <button
               onClick={item.onClick}
-              className="w-full flex items-center px-4 py-3 hover:bg-opacity-75 transition-colors"
+              className="w-full flex items-center px-4 py-3 hover:bg-opacity-75 active:scale-[0.98] transition-colors"
               style={{ color: textColor }}
               role="menuitem"
             >

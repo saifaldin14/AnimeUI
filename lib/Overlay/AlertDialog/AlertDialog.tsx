@@ -73,13 +73,13 @@ export const AlertDialog: React.FC<AnimeAlertDialogProps> = ({
           <div className="flex justify-center space-x-4">
             <button
               onClick={onCancel}
-              className="px-4 py-2 bg-gray-300 rounded-md font-bold hover:bg-gray-400 transition-colors"
+              className="px-4 py-2 bg-gray-300 rounded-md font-bold hover:bg-gray-400 active:scale-[0.98] transition-colors"
             >
               Cancel
             </button>
             <button
               onClick={onConfirm}
-              className="px-4 py-2 bg-pink-500 text-white rounded-md font-bold hover:bg-pink-600 transition-colors"
+              className="px-4 py-2 bg-pink-500 text-white rounded-md font-bold hover:bg-pink-600 active:scale-[0.98] transition-colors"
             >
               Confirm
             </button>

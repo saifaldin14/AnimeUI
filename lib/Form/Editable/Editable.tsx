@@ -9,6 +9,8 @@ type EditableProps = {
   toColor?: string; // End color for gradient
   textColor?: string; // Text color
   fontSize?: number; // Font size in pixels
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Editable: React.FC<EditableProps> = ({
@@ -20,6 +22,8 @@ export const Editable: React.FC<EditableProps> = ({
   toColor = "#a855f7", // Default purple-500
   textColor = "#000000", // Default black
   fontSize = 16, // Default font size
+  className = "",
+  style,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentValue, setCurrentValue] = useState(value);
@@ -47,7 +51,11 @@ export const Editable: React.FC<EditableProps> = ({
     <div
       className={`relative inline-block cursor-pointer ${
         disabled ? "opacity-50 cursor-not-allowed" : ""
-      }`}
+      } ${className}`}
+      style={style}
+      role="textbox"
+      aria-disabled={disabled}
+      aria-label={value || placeholder}
       onClick={startEditing}
     >
       {!isEditing ? (
@@ -86,18 +94,6 @@ export const Editable: React.FC<EditableProps> = ({
           }}
         />
       )}
-      {/* TailwindCSS Custom Animations */}
-      <style>
-        {`
-          @keyframes ping {
-            0% { transform: scale(1); opacity: 1; }
-            75%, 100% { transform: scale(2); opacity: 0; }
-          }
-          .animate-ping {
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-          }
-        `}
-      </style>
     </div>
   );
 };

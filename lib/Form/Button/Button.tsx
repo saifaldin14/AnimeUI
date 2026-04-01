@@ -5,6 +5,9 @@ type AnimeButtonProps = {
   onClick?: () => void;
   fromColor?: string;
   toColor?: string;
+  className?: string;
+  style?: React.CSSProperties;
+  disabled?: boolean;
 };
 
 export const Button: React.FC<AnimeButtonProps> = ({
@@ -12,6 +15,9 @@ export const Button: React.FC<AnimeButtonProps> = ({
   onClick,
   fromColor = "#ec4899", // Default to Tailwind's pink-500
   toColor = "#a855f7", // Default to Tailwind's purple-500
+  className = "",
+  style,
+  disabled = false,
 }) => {
   const gradientStyle = {
     backgroundImage: `linear-gradient(to right, ${fromColor}, ${toColor})`,
@@ -20,7 +26,11 @@ export const Button: React.FC<AnimeButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className="relative inline-block px-8 py-3 font-bold text-white group"
+      disabled={disabled}
+      aria-label={text}
+      aria-disabled={disabled}
+      className={`relative inline-block px-8 py-3 font-bold text-white group ${className}`}
+      style={style}
     >
       <span
         style={gradientStyle}

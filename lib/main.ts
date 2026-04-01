@@ -1,5 +1,7 @@
 import './tailwind.css'
 import './shared/animations.css'
+import './shared/patterns.css'
+import './shared/typography.css'
 
 // Theme system
 export * from "./Theme";

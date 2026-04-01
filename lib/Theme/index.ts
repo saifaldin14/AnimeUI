@@ -17,4 +17,13 @@ export {
   sunsetTheme,
   themes,
   animePalette,
+  fontSize,
+  lineHeight,
+  fontWeight,
+  letterSpacing,
+  spacing,
+  elevation,
+  borders,
+  motion,
+  zIndex,
 } from './tokens';

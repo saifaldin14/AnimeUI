@@ -1,0 +1,225 @@
+/*
+ * AnimeUI Manga Visual Patterns
+ *
+ * Reusable manga-inspired CSS patterns and decorative classes.
+ * These can be applied to any element for anime/manga visual effects.
+ */
+
+/* ─── Speed Lines: Radial lines radiating from center ─── */
+.anime-speed-lines {
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-speed-lines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-conic-gradient(
+      rgba(255, 255, 255, 0.06) 0deg 2deg,
+      transparent 2deg 10deg
+    );
+  background-position: center;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Halftone: Ben-Day dot pattern (classic manga printing) ─── */
+.anime-halftone {
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-halftone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(0, 0, 0, 0.12) 1px, transparent 1px);
+  background-size: 6px 6px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Cross-Hatch: Cross-hatching pattern for shadows ─── */
+.anime-cross-hatch {
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-cross-hatch::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(0, 0, 0, 0.08) 4px,
+      rgba(0, 0, 0, 0.08) 5px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 4px,
+      rgba(0, 0, 0, 0.08) 4px,
+      rgba(0, 0, 0, 0.08) 5px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Burst: Radial burst / impact lines behind elements ─── */
+.anime-burst {
+  position: relative;
+  overflow: hidden;
+}
+
+.anime-burst::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background:
+    repeating-conic-gradient(
+      rgba(255, 255, 255, 0.1) 0deg 3deg,
+      transparent 3deg 15deg
+    );
+  background-position: center;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Panel Border: Proper manga panel border (thick outer, thin inner) ─── */
+.anime-panel-border {
+  border: 3px solid #241335;
+  position: relative;
+  isolation: isolate;
+}
+
+.anime-panel-border::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(36, 19, 53, 0.3);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Speech Bubble: CSS-only speech bubble with tail ─── */
+.anime-speech-bubble {
+  position: relative;
+  background: #fff7fb;
+  color: #241335;
+  border: 3px solid #241335;
+  border-radius: 1.5rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 4px 4px 0 #241335;
+}
+
+.anime-speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 1.5rem;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 10px 0 10px;
+  border-color: #fff7fb transparent transparent transparent;
+  filter: drop-shadow(0 3px 0 #241335);
+}
+
+.anime-speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: calc(1.5rem - 2px);
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 18px 12px 0 12px;
+  border-color: #241335 transparent transparent transparent;
+}
+
+/* ─── Thought Bubble: CSS-only thought bubble with cloud border ─── */
+.anime-thought-bubble {
+  position: relative;
+  background: #fff7fb;
+  color: #241335;
+  border: 3px solid #241335;
+  border-radius: 50% / 40%;
+  padding: 1.5rem 2rem;
+  box-shadow: 4px 4px 0 #241335;
+}
+
+.anime-thought-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 2rem;
+  width: 16px;
+  height: 16px;
+  background: #fff7fb;
+  border: 3px solid #241335;
+  border-radius: 50%;
+  box-shadow: 3px 3px 0 #241335;
+}
+
+.anime-thought-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 1.25rem;
+  width: 10px;
+  height: 10px;
+  background: #fff7fb;
+  border: 3px solid #241335;
+  border-radius: 50%;
+  box-shadow: 2px 2px 0 #241335;
+}
+
+/* ─── Action Text: Bold text with outline stroke (manga SFX style) ─── */
+.anime-action-text {
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #fff7fb;
+  -webkit-text-stroke: 2px #241335;
+  paint-order: stroke fill;
+  text-shadow:
+    3px 3px 0 #241335,
+    -1px -1px 0 #241335,
+    1px -1px 0 #241335,
+    -1px 1px 0 #241335;
+}
+
+/* ─── Gradient Shift: Animated gradient that shifts hue ─── */
+.anime-gradient-shift {
+  background: linear-gradient(
+    135deg,
+    #ec4899,
+    #a855f7,
+    #3b82f6,
+    #ec4899
+  );
+  background-size: 300% 300%;
+  animation: animeGradientShift 6s ease-in-out infinite;
+}
+
+@keyframes animeGradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ─── Reduced Motion Support ─── */
+@media (prefers-reduced-motion: reduce) {
+  .anime-gradient-shift {
+    animation: none;
+  }
+}

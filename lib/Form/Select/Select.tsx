@@ -14,6 +14,8 @@ type SelectProps = {
   fromColor?: string; // Start color for gradient
   toColor?: string; // End color for gradient
   textColor?: string; // Text color
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Select: React.FC<SelectProps> = ({
@@ -25,6 +27,8 @@ export const Select: React.FC<SelectProps> = ({
   fromColor = "#ec4899", // Default pink-500
   toColor = "#a855f7", // Default purple-500
   textColor = "#ffffff", // Default white
+  className = "",
+  style,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -42,10 +46,13 @@ export const Select: React.FC<SelectProps> = ({
   };
 
   return (
-    <div className="relative inline-block w-64">
+    <div className={`relative inline-block w-64 ${className}`} style={style}>
       {/* Selected Option */}
       <button
         type="button"
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-disabled={disabled}
         className={`w-full px-4 py-2 text-left rounded-lg shadow-md focus:outline-none ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
@@ -70,6 +77,7 @@ export const Select: React.FC<SelectProps> = ({
       {/* Dropdown Menu */}
       {isOpen && (
         <ul
+          role="listbox"
           className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg overflow-hidden"
           style={{ color: "black" }}
         >
@@ -77,6 +85,8 @@ export const Select: React.FC<SelectProps> = ({
             <li key={option.value}>
               <button
                 type="button"
+                role="option"
+                aria-selected={option.value === value}
                 className="w-full text-left px-4 py-2 hover:bg-gray-100 font-anime"
                 onClick={() => handleOptionClick(option.value)}
               >
@@ -89,31 +99,11 @@ export const Select: React.FC<SelectProps> = ({
       {/* Anime Vibe Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating Elements */}
-        <div className="absolute top-2 left-4 w-2 h-2 bg-white rounded-full animate-twinkle"></div>
-        <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full animate-twinkle delay-200"></div>
+        <div className="absolute top-2 left-4 w-2 h-2 bg-white rounded-full anime-twinkle"></div>
+        <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full anime-twinkle anime-delay-200"></div>
         <div className="absolute bottom-2 left-6 w-3 h-3 bg-yellow-300 rounded-full animate-ping"></div>
-        <div className="absolute bottom-4 right-6 w-2 h-2 bg-pink-300 rounded-full animate-float delay-300"></div>
+        <div className="absolute bottom-4 right-6 w-2 h-2 bg-pink-300 rounded-full anime-float anime-delay-300"></div>
       </div>
-      {/* TailwindCSS Custom Animations */}
-      <style>
-        {`
-          @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-          }
-          .animate-twinkle {
-            animation: twinkle 2s infinite;
-          }
-          .animate-float {
-            animation: float 3s ease-in-out infinite;
-          }
-          @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0); }
-          }
-        `}
-      </style>
     </div>
   );
 };

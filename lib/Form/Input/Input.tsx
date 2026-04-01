@@ -11,6 +11,8 @@ type InputProps = {
   error?: boolean;
   errorMessage?: string;
   type?: string; // Input type (e.g., 'text', 'password')
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Input: React.FC<InputProps> = ({
@@ -24,6 +26,8 @@ export const Input: React.FC<InputProps> = ({
   error = false,
   errorMessage = "",
   type = "text",
+  className = "",
+  style,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!disabled) {
@@ -32,13 +36,16 @@ export const Input: React.FC<InputProps> = ({
   };
 
   return (
-    <div className="relative">
+    <div className={`relative ${className}`} style={style}>
       <input
         type={type}
         value={value}
         onChange={handleChange}
         disabled={disabled}
         placeholder={placeholder}
+        aria-disabled={disabled}
+        aria-invalid={error}
+        aria-describedby={error && errorMessage ? "input-error" : undefined}
         className={`w-full px-4 py-2 rounded-md focus:outline-none transition-all duration-300 ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         } ${error ? "border border-red-500" : ""}`}
@@ -59,7 +66,7 @@ export const Input: React.FC<InputProps> = ({
         </>
       )}
       {error && errorMessage && (
-        <p className="mt-1 text-red-500 text-sm font-anime">{errorMessage}</p>
+        <p id="input-error" className="mt-1 text-red-500 text-sm font-anime" role="alert">{errorMessage}</p>
       )}
     </div>
   );

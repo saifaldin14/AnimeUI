@@ -14,6 +14,8 @@ type RadioProps = {
   fromColor?: string; // Start color for gradient
   toColor?: string; // End color for gradient
   size?: number; // Size of the radio button
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Radio: React.FC<RadioProps> = ({
@@ -24,9 +26,11 @@ export const Radio: React.FC<RadioProps> = ({
   fromColor = "#ec4899", // Default pink-500
   toColor = "#a855f7", // Default purple-500
   size = 24, // Default size
+  className = "",
+  style,
 }) => {
   return (
-    <div className="flex flex-col space-y-2">
+    <div className={`flex flex-col space-y-2 ${className}`} style={style} role="radiogroup">
       {options.map((option, index) => {
         const checked = selectedValue === option.value;
         const disabled = option.disabled || false;

@@ -8,6 +8,8 @@ type SliderProps = {
   step?: number;
   disabled?: boolean;
   color?: string; // Start color for gradient
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Slider: React.FC<SliderProps> = ({
@@ -18,6 +20,8 @@ export const Slider: React.FC<SliderProps> = ({
   step = 1,
   disabled = false,
   color = "#ec4899", // Default pink-500
+  className = "",
+  style,
 }) => {
   const percentage = ((value - min) / (max - min)) * 100;
 
@@ -27,7 +31,7 @@ export const Slider: React.FC<SliderProps> = ({
   };
 
   return (
-    <div className="relative w-full">
+    <div className={`relative w-full ${className}`} style={style}>
       <input
         type="range"
         value={value}
@@ -36,6 +40,10 @@ export const Slider: React.FC<SliderProps> = ({
         max={max}
         step={step}
         disabled={disabled}
+        aria-valuemin={min}
+        aria-valuemax={max}
+        aria-valuenow={value}
+        aria-disabled={disabled}
         className="slider"
         style={{
           background: `linear-gradient(90deg, ${color} ${percentage}%, #e5e7eb ${percentage}%)`,
@@ -51,14 +59,14 @@ export const Slider: React.FC<SliderProps> = ({
             {/* Sparkle */}
             <div className="absolute -top-3 -left-3 w-3 h-3 bg-yellow-300 rounded-full animate-ping"></div>
             {/* Floating Heart */}
-            <div className="absolute -bottom-4 -right-3 w-4 h-4 transform rotate-45 animate-float">
+            <div className="absolute -bottom-4 -right-3 w-4 h-4 transform rotate-45 anime-float-rotate">
               <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
               <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
             </div>
           </div>
         </div>
       )}
-      {/* TailwindCSS Custom Styles and Animations */}
+      {/* Slider thumb styling */}
       <style>
         {`
           .slider {
@@ -83,14 +91,6 @@ export const Slider: React.FC<SliderProps> = ({
             background: ${color};
             border-radius: 50%;
             cursor: pointer;
-          }
-          @keyframes float {
-            0% { transform: translateY(0) rotate(45deg); }
-            50% { transform: translateY(-10px) rotate(45deg); }
-            100% { transform: translateY(0) rotate(45deg); }
-          }
-          .animate-float {
-            animation: float 2s ease-in-out infinite;
           }
         `}
       </style>

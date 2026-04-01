@@ -9,6 +9,8 @@ type SpeechBubbleButtonProps = {
   backgroundColor?: string;
   textColor?: string;
   tailColor?: string;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
@@ -18,6 +20,8 @@ export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   backgroundColor = "white",
   textColor = "black",
   tailColor,
+  className = "",
+  style,
 }) => {
   const tailStyles =
     tailPosition !== "none"
@@ -45,8 +49,9 @@ export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`relative px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300`}
-      style={{ backgroundColor, color: textColor }}
+      aria-label={text}
+      className={`relative px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 ${className}`}
+      style={{ backgroundColor, color: textColor, ...style }}
     >
       {text}
       {tailPosition !== "none" && <span style={tailStyles} />}

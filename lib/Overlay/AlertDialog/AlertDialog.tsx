@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 
 type AnimeAlertDialogProps = {
   title: string;
@@ -6,6 +6,8 @@ type AnimeAlertDialogProps = {
   onConfirm: () => void;
   onCancel: () => void;
   show: boolean;
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const AlertDialog: React.FC<AnimeAlertDialogProps> = ({
@@ -14,15 +16,40 @@ export const AlertDialog: React.FC<AnimeAlertDialogProps> = ({
   onConfirm,
   onCancel,
   show,
+  className = "",
+  style,
 }) => {
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") onCancel();
+    },
+    [onCancel],
+  );
+
+  useEffect(() => {
+    if (show) {
+      document.addEventListener("keydown", handleKeyDown);
+      return () => document.removeEventListener("keydown", handleKeyDown);
+    }
+  }, [show, handleKeyDown]);
+
   if (!show) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+      role="alertdialog"
+      aria-modal="true"
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-message"
+    >
       {/* Dialog Container */}
-      <div className="relative bg-white rounded-lg shadow-lg w-80">
+      <div
+        className={`relative bg-white rounded-lg shadow-lg w-80 anime-fade-in ${className}`}
+        style={style}
+      >
         {/* Cute Anime Character */}
-        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
+        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2" aria-hidden="true">
           <div className="relative w-32 h-32">
             {/* Face */}
             <div className="absolute inset-0 bg-pink-200 rounded-full"></div>
@@ -41,8 +68,8 @@ export const AlertDialog: React.FC<AnimeAlertDialogProps> = ({
         </div>
         {/* Dialog Content */}
         <div className="px-6 py-8 pt-16 text-center">
-          <h2 className="text-2xl font-bold mb-4 font-anime">{title}</h2>
-          <p className="text-gray-700 mb-6">{message}</p>
+          <h2 id="alert-dialog-title" className="text-2xl font-bold mb-4 font-anime">{title}</h2>
+          <p id="alert-dialog-message" className="text-gray-700 mb-6">{message}</p>
           <div className="flex justify-center space-x-4">
             <button
               onClick={onCancel}

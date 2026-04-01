@@ -9,6 +9,8 @@ type CheckboxProps = {
   fromColor?: string; // Start color for gradient
   toColor?: string; // End color for gradient
   size?: number; // Size of the checkbox
+  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const Checkbox: React.FC<CheckboxProps> = ({
@@ -19,6 +21,8 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   fromColor = "#ec4899", // Default pink-500
   toColor = "#a855f7", // Default purple-500
   size = 24, // Default size
+  className = "",
+  style,
 }) => {
   const handleChange = () => {
     if (!disabled) {
@@ -35,7 +39,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   };
 
   return (
-    <label className="flex items-center cursor-pointer select-none">
+    <label className={`flex items-center cursor-pointer select-none ${className}`} style={style} role="checkbox" aria-checked={checked} aria-disabled={disabled}>
       <div className="relative">
         <input
           type="checkbox"

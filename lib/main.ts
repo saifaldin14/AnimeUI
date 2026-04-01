@@ -7,3 +7,4 @@ export * from "./Feedback";
 export * from "./Overlay";
 export * from "./Layout";
 export * from "./Navigation";
+export * from "./Typography";

@@ -2,6 +2,14 @@ import React from "react";
 
 export const animeInk = "#241335";
 export const animePaper = "#fff7fb";
+export const animeSparkleClipPath =
+  "polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)";
+export const animeStatusAccents = {
+  success: ["#22c55e", "#86efac"],
+  error: ["#ef4444", "#fb7185"],
+  warning: ["#f59e0b", "#fde047"],
+  info: ["#3b82f6", "#7dd3fc"],
+} as const;
 
 type AnimeVarsOptions = {
   fromColor: string;

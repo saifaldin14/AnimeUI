@@ -28,24 +28,21 @@ export const SpeechBubbleButton: React.FC<SpeechBubbleButtonProps> = ({
   const tailStyles =
     tailPosition !== "none"
       ? {
-          content: "''",
           position: "absolute" as "absolute",
-          bottom: "-14px",
-          width: "22px",
+          bottom: "-10px",
+          width: "18px",
           height: "18px",
-          borderBottom: `3px solid ${animeInk}`,
           background: `linear-gradient(180deg, ${resolvedTailColor}, #ffffff)`,
-          transform: "skewX(-22deg)",
-          borderRadius: "0 0 0.75rem 0",
-          borderStyle: "solid",
+          transform: "rotate(45deg)",
           ...(tailPosition === "left" && {
-            left: "1.25rem",
-            borderLeft: `3px solid ${animeInk}`,
+            left: "1.5rem",
+            borderRight: `3px solid ${animeInk}`,
+            borderBottom: `3px solid ${animeInk}`,
           }),
           ...(tailPosition === "right" && {
-            right: "1.25rem",
-            borderRight: `3px solid ${animeInk}`,
-            transform: "skewX(22deg)",
+            right: "1.5rem",
+            borderTop: `3px solid ${animeInk}`,
+            borderLeft: `3px solid ${animeInk}`,
           }),
         }
       : {};

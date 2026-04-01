@@ -1,6 +1,6 @@
 // Checkbox.tsx
 import React from "react";
-import { animeInk } from "../../shared";
+import { animeInk, animeSparkleClipPath } from "../../shared";
 
 type CheckboxProps = {
   checked: boolean;
@@ -85,8 +85,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
                 className="h-2.5 w-2.5 anime-sparkle"
                 style={{
                   background: "linear-gradient(135deg, #fbbf24, #fff7cc)",
-                  clipPath:
-                    "polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)",
+                  clipPath: animeSparkleClipPath,
                 }}
               ></div>
             </div>

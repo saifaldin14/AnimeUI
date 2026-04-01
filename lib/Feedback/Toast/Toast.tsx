@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { getAnimeVars } from "../../shared";
+import { animeStatusAccents, getAnimeVars } from "../../shared";
 
 type ToastType = "success" | "error" | "warning" | "info";
 
@@ -110,13 +110,7 @@ export const Toast: React.FC<AnimeToastProps> = ({
   }, [onClose, duration]);
 
   const defaultStyles = toastTypeStyles[type];
-  const accentMap: Record<ToastType, [string, string]> = {
-    success: ["#22c55e", "#86efac"],
-    error: ["#ef4444", "#fb7185"],
-    warning: ["#f59e0b", "#fde047"],
-    info: ["#3b82f6", "#7dd3fc"],
-  };
-  const [fromColor, toColor] = accentMap[type];
+  const [fromColor, toColor] = animeStatusAccents[type];
   const mangaVars = getAnimeVars({
     fromColor,
     toColor,

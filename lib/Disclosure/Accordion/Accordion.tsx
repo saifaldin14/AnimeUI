@@ -46,6 +46,7 @@ export const Accordion: React.FC<AnimeAccordionProps> = ({
               onClick={() => toggleItem(index)}
               style={panelVars}
               className="anime-manga-panel anime-manga-pressable w-full flex items-center justify-between p-4 text-left font-bold uppercase tracking-[0.14em] text-white focus:outline-none"
+              aria-expanded={isActive}
             >
               <span>{item.title}</span>
               <svg

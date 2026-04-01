@@ -1,5 +1,5 @@
 import React from "react";
-import { getAnimeVars } from "../../shared";
+import { animeSparkleClipPath, getAnimeVars } from "../../shared";
 
 type AnimeButtonProps = {
   text: string;
@@ -42,8 +42,7 @@ export const Button: React.FC<AnimeButtonProps> = ({
         className="absolute right-4 top-3 h-3 w-3 anime-sparkle"
         style={{
           background: "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,245,157,0.95))",
-          clipPath:
-            "polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)",
+          clipPath: animeSparkleClipPath,
         }}
         aria-hidden="true"
       />

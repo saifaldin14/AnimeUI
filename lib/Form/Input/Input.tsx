@@ -1,5 +1,5 @@
 import React from "react";
-import { getAnimePaperVars } from "../../shared";
+import { animeSparkleClipPath, getAnimePaperVars } from "../../shared";
 
 type InputProps = {
   value: string;
@@ -58,7 +58,7 @@ export const Input: React.FC<InputProps> = ({
         aria-disabled={disabled}
         aria-invalid={error}
         aria-describedby={error && errorMessage ? "input-error" : undefined}
-        className={`relative z-10 w-full bg-transparent px-4 py-3 pr-12 font-semibold placeholder:text-[#7b6a87] focus:outline-none transition-all duration-300 ${
+        className={`relative z-10 w-full bg-transparent px-4 py-3 pr-8 font-semibold placeholder:text-[#7b6a87] focus:outline-none transition-all duration-300 ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
         style={{ color: textColor }}
@@ -71,8 +71,7 @@ export const Input: React.FC<InputProps> = ({
               className="h-3 w-3 anime-sparkle"
               style={{
                 background: "linear-gradient(135deg, #fbbf24, #fff7cc)",
-                clipPath:
-                  "polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)",
+                clipPath: animeSparkleClipPath,
               }}
             ></div>
           </div>
@@ -97,15 +96,6 @@ export const Input: React.FC<InputProps> = ({
         >
           {errorMessage}
         </p>
-      )}
-    </div>
-  );
-};
-          </div>
-        </>
-      )}
-      {error && errorMessage && (
-        <p id="input-error" className="mt-1 text-red-500 text-sm font-anime" role="alert">{errorMessage}</p>
       )}
     </div>
   );

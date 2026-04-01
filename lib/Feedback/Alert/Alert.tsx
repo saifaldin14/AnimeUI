@@ -1,5 +1,5 @@
 import React from "react";
-import { getAnimePaperVars } from "../../shared";
+import { animeStatusAccents, getAnimePaperVars } from "../../shared";
 
 type AlertType = "success" | "error" | "warning" | "info";
 
@@ -47,13 +47,7 @@ export const Alert: React.FC<AnimeAlertProps> = ({
   customColors,
 }) => {
   const defaultStyles = alertTypeStyles[type];
-  const accentMap: Record<AlertType, [string, string]> = {
-    success: ["#22c55e", "#86efac"],
-    error: ["#ef4444", "#fb7185"],
-    warning: ["#f59e0b", "#fde047"],
-    info: ["#3b82f6", "#7dd3fc"],
-  };
-  const [fromColor, toColor] = accentMap[type];
+  const [fromColor, toColor] = animeStatusAccents[type];
   const mangaVars = getAnimePaperVars({
     fromColor,
     toColor,

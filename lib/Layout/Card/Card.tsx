@@ -1,5 +1,6 @@
 import React from "react";
 import { AnimeDecorations } from "../../shared/AnimeDecorations";
+import { getAnimePaperVars, getAnimeVars } from "../../shared";
 
 type CardVariant = "default" | "glass" | "neon" | "flat";
 
@@ -40,13 +41,20 @@ export const Card: React.FC<CardProps> = ({
   style,
 }) => {
   const gradientBorder = {
-    background: `linear-gradient(135deg, ${fromColor}, ${toColor})`,
+    ...(variant === "flat" || variant === "glass"
+      ? getAnimePaperVars({
+          fromColor,
+          toColor,
+          textColor: "#241335",
+          radius: "1.5rem",
+        })
+      : getAnimeVars({
+          fromColor,
+          toColor,
+          textColor: "#ffffff",
+          radius: "1.5rem",
+        })),
   };
-
-  const glowShadow = {
-    "--anime-glow": fromColor,
-    boxShadow: `0 0 15px ${fromColor}40, 0 0 30px ${toColor}20`,
-  } as React.CSSProperties;
 
   return (
     <div
@@ -54,21 +62,31 @@ export const Card: React.FC<CardProps> = ({
         ? { role: "region" as const, "aria-label": title }
         : {})}
       className={[
-        "relative rounded-xl p-[2px] anime-fade-in",
-        hoverable &&
-          "transition-all duration-300 hover:scale-[1.02] hover:shadow-xl",
+        variant === "flat" || variant === "glass"
+          ? "anime-manga-paper"
+          : "anime-manga-panel",
+        "relative overflow-hidden p-0 anime-fade-in",
+        hoverable && "anime-manga-pressable",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
-      style={{ ...gradientBorder, ...style }}
+      style={{
+        ...gradientBorder,
+        ...(variant === "glass"
+          ? {
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255,255,255,0.82)",
+            }
+          : {}),
+        ...style,
+      }}
     >
       <div
         className={[
-          "relative rounded-[10px] overflow-hidden",
+          "relative overflow-hidden rounded-[inherit]",
           variantClasses[variant],
         ].join(" ")}
-        style={variant === "neon" ? glowShadow : undefined}
       >
         {decorations && (
           <AnimeDecorations
@@ -82,21 +100,31 @@ export const Card: React.FC<CardProps> = ({
 
         {title && (
           <div
-            className="px-5 py-4 border-b border-white/10 font-bold text-lg"
+            className="px-5 py-4 text-lg font-bold uppercase tracking-[0.14em]"
             style={{
-              backgroundImage: `linear-gradient(to right, ${fromColor}, ${toColor})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
+              color: variant === "flat" || variant === "glass" ? "#241335" : "#ffffff",
+              borderBottom:
+                variant === "flat" || variant === "glass"
+                  ? "2px solid rgba(36, 19, 53, 0.12)"
+                  : "2px solid rgba(255,255,255,0.14)",
             }}
           >
             {title}
           </div>
         )}
 
-        <div className="px-5 py-4 relative z-10">{children}</div>
+        <div className="relative z-10 px-5 py-4">{children}</div>
 
         {footer && (
-          <div className="px-5 py-3 border-t border-white/10 text-sm opacity-80">
+          <div
+            className="px-5 py-3 text-sm opacity-80"
+            style={{
+              borderTop:
+                variant === "flat" || variant === "glass"
+                  ? "2px solid rgba(36, 19, 53, 0.12)"
+                  : "2px solid rgba(255,255,255,0.14)",
+            }}
+          >
             {footer}
           </div>
         )}

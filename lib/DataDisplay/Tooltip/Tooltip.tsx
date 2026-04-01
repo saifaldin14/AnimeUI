@@ -1,4 +1,5 @@
 import React, { useState, useRef, useCallback } from "react";
+import { getAnimeVars } from "../../shared";
 
 type TooltipPosition = "top" | "bottom" | "left" | "right";
 
@@ -53,6 +54,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
 }) => {
   const [visible, setVisible] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const mangaVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1rem",
+    shadowOffset: "3px",
+  });
 
   const show = useCallback(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -86,14 +94,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
           id="anime-tooltip"
           role="tooltip"
           className={[
-            "absolute z-50 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap pointer-events-none anime-fade-in",
+            "anime-manga-panel absolute z-50 whitespace-nowrap px-3 py-2 text-sm font-semibold uppercase tracking-[0.08em] pointer-events-none anime-fade-in",
             positionClasses[position],
           ].join(" ")}
-          style={{
-            background: `linear-gradient(135deg, ${fromColor}, ${toColor})`,
-            color: textColor,
-            boxShadow: `0 4px 16px ${fromColor}30`,
-          }}
+          style={mangaVars}
         >
           {content}
           {/* Arrow */}
@@ -103,7 +107,10 @@ export const Tooltip: React.FC<TooltipProps> = ({
               arrowPositionClasses[position],
               arrowBorderClasses[position],
             ].join(" ")}
-            style={{ [arrowColorProperty[position]]: arrowColor }}
+            style={{
+              [arrowColorProperty[position]]: arrowColor,
+              filter: "drop-shadow(0 2px 0 #241335)",
+            }}
             aria-hidden="true"
           />
         </div>

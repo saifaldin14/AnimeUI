@@ -1,5 +1,6 @@
 // Checkbox.tsx
 import React from "react";
+import { animeInk } from "../../shared";
 
 type CheckboxProps = {
   checked: boolean;
@@ -35,7 +36,11 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     height: `${size}px`,
     background: checked
       ? `linear-gradient(135deg, ${fromColor}, ${toColor})`
-      : "#e5e7eb", // Tailwind's gray-300
+      : "linear-gradient(180deg, #fff7fb, #ffffff)",
+    border: `3px solid ${animeInk}`,
+    borderRadius: "0.75rem",
+    boxShadow: `3px 3px 0 ${animeInk}`,
+    color: checked ? "#ffffff" : animeInk,
   };
 
   return (
@@ -75,19 +80,24 @@ export const Checkbox: React.FC<CheckboxProps> = ({
         {/* Anime Vibe Elements */}
         {checked && !disabled && (
           <>
-            <div className="absolute -top-1 -right-1 animate-ping">
-              <div className="w-2 h-2 bg-pink-400 rounded-full"></div>
+            <div className="absolute -top-1 right-0">
+              <div
+                className="h-2.5 w-2.5 anime-sparkle"
+                style={{
+                  background: "linear-gradient(135deg, #fbbf24, #fff7cc)",
+                  clipPath:
+                    "polygon(50% 0%, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0% 50%, 40% 40%)",
+                }}
+              ></div>
             </div>
-            <div className="absolute -bottom-1 -left-1 animate-ping delay-200">
-              <div className="w-1.5 h-1.5 bg-yellow-300 rounded-full"></div>
-            </div>
+            <div className="absolute -bottom-1 -left-1 h-1.5 w-4 rounded-full bg-gradient-to-r from-pink-300/70 to-transparent"></div>
           </>
         )}
       </div>
       {label && (
         <span
-          className={`ml-3 font-anime ${
-            disabled ? "text-gray-400" : "text-black"
+          className={`ml-3 font-semibold uppercase tracking-[0.12em] ${
+            disabled ? "text-gray-400" : "text-[#241335]"
           }`}
         >
           {label}

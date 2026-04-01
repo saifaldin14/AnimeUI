@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback } from "react";
+import { getAnimeVars } from "../../shared";
 
 type ModalProps = {
   isOpen: boolean;
@@ -21,6 +22,13 @@ export const Modal: React.FC<ModalProps> = ({
   className = "",
   style,
 }) => {
+  const mangaVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.6rem",
+  });
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -46,42 +54,21 @@ export const Modal: React.FC<ModalProps> = ({
     >
       {/* Background Overlay */}
       <div
-        className="absolute inset-0 bg-black bg-opacity-50"
+        className="anime-overlay-backdrop absolute inset-0"
         onClick={onClose}
         aria-hidden="true"
-      ></div>
+      />
 
       {/* Modal Content */}
       <div
-        className={`relative z-10 w-11/12 max-w-md mx-auto p-6 rounded-lg shadow-lg overflow-hidden anime-fade-in ${className}`}
-        style={{
-          background: `linear-gradient(to bottom right, ${fromColor}, ${toColor})`,
-          color: textColor,
-          ...style,
-        }}
+        className={`anime-manga-panel relative z-10 mx-auto w-11/12 max-w-md overflow-hidden p-6 anime-fade-in ${className}`}
+        style={{ ...mangaVars, ...style }}
       >
-        {/* Anime Vibe Elements */}
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          {/* Floating Stars */}
-          <div className="absolute top-4 left-8 w-2 h-2 bg-white rounded-full anime-twinkle"></div>
-          <div className="absolute top-10 right-10 w-3 h-3 bg-white rounded-full anime-twinkle anime-delay-200"></div>
-          {/* Sparkles */}
-          <div className="absolute bottom-6 left-6 w-4 h-4 bg-yellow-300 rounded-full animate-ping"></div>
-          <div className="absolute bottom-10 right-8 w-3 h-3 bg-yellow-300 rounded-full animate-ping anime-delay-300"></div>
-          {/* Floating Hearts */}
-          <div className="absolute top-1/3 left-4 w-5 h-5 transform rotate-45 anime-float-rotate">
-            <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
-            <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
-          </div>
-          <div className="absolute bottom-1/4 right-6 w-4 h-4 transform rotate-45 anime-float-rotate anime-delay-500">
-            <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
-            <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
-          </div>
-        </div>
+        <div className="absolute inset-0 anime-screen-tone opacity-45" aria-hidden="true" />
 
         {/* Close Button */}
         <button
-          className="absolute top-4 right-4 text-2xl focus:outline-none"
+          className="absolute right-4 top-4 z-10 text-2xl focus:outline-none"
           onClick={onClose}
           style={{ color: textColor }}
           aria-label="Close modal"
@@ -90,7 +77,7 @@ export const Modal: React.FC<ModalProps> = ({
         </button>
 
         {/* Modal Content */}
-        <div className="relative z-10 font-anime">{children}</div>
+        <div className="relative z-10 font-medium">{children}</div>
       </div>
     </div>
   );

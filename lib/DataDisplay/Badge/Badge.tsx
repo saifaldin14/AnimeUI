@@ -1,4 +1,5 @@
 import React from "react";
+import { getAnimePaperVars, getAnimeVars } from "../../shared";
 
 type BadgeVariant = "solid" | "outline" | "glow";
 type BadgeSize = "sm" | "md" | "lg";
@@ -40,28 +41,20 @@ export const Badge: React.FC<BadgeProps> = ({
   className = "",
   style,
 }) => {
-  const gradient = `linear-gradient(135deg, ${fromColor}, ${toColor})`;
-
-  const variantStyles: Record<BadgeVariant, React.CSSProperties> = {
-    solid: {
-      background: gradient,
-      color: textColor,
-    },
-    outline: {
-      background: "transparent",
-      border: "2px solid transparent",
-      backgroundImage: `linear-gradient(rgb(17,24,39), rgb(17,24,39)), ${gradient}`,
-      backgroundOrigin: "border-box",
-      backgroundClip: "padding-box, border-box",
-      color: textColor,
-    },
-    glow: {
-      background: gradient,
-      color: textColor,
-      "--anime-glow": fromColor,
-      boxShadow: `0 0 12px ${fromColor}60, 0 0 24px ${toColor}30`,
-    } as React.CSSProperties,
-  };
+  const panelVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "999px",
+    shadowOffset: "3px",
+  });
+  const paperVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor: "#241335",
+    radius: "999px",
+    shadowOffset: "3px",
+  });
 
   const animationClass = animated
     ? variant === "glow"
@@ -73,19 +66,31 @@ export const Badge: React.FC<BadgeProps> = ({
     <span
       role="status"
       className={[
-        "inline-flex items-center gap-1.5 rounded-full font-semibold leading-none anime-fade-in",
+        variant === "outline" ? "anime-manga-paper" : "anime-manga-chip",
+        "inline-flex items-center gap-1.5 font-semibold uppercase leading-none tracking-[0.12em] anime-fade-in",
         sizeClasses[size],
         animationClass,
         className,
       ]
         .filter(Boolean)
         .join(" ")}
-      style={{ ...variantStyles[variant], ...style }}
+      style={{
+        ...(variant === "outline" ? paperVars : panelVars),
+        ...(variant === "glow"
+          ? {
+              boxShadow: `0 0 0 2px #241335, 0 0 16px ${fromColor}55, 3px 3px 0 #241335`,
+            }
+          : {}),
+        ...style,
+      }}
     >
       {dot && (
         <span
-          className={`${dotSizeClasses[size]} rounded-full shrink-0 ${animated ? "animate-pulse" : ""}`}
-          style={{ backgroundColor: textColor }}
+          className={`${dotSizeClasses[size]} shrink-0 rounded-full ${animated ? "animate-pulse" : ""}`}
+          style={{
+            backgroundColor: variant === "outline" ? fromColor : textColor,
+            boxShadow: "0 0 0 2px rgba(36, 19, 53, 0.18)",
+          }}
           aria-hidden="true"
         />
       )}

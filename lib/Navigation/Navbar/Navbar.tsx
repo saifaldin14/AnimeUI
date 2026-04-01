@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Sparkles } from "../../shared/AnimeDecorations";
+import { getAnimePaperVars, getAnimeVars } from "../../shared";
 
 type NavItem = {
   label: string;
@@ -31,36 +32,31 @@ export const Navbar: React.FC<NavbarProps> = ({
   style,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const gradientBg = {
-    background: `linear-gradient(135deg, ${fromColor}dd, ${toColor}dd)`,
-  };
-
-  const glowShadow = {
-    boxShadow: `0 4px 20px ${fromColor}40, 0 2px 10px ${toColor}30`,
-  };
-
-  const brandGradient = {
-    backgroundImage: `linear-gradient(to right, ${textColor}, ${textColor})`,
-    WebkitBackgroundClip: "text" as const,
-    WebkitTextFillColor: "transparent",
-  };
-
-  const activeGradient = {
-    backgroundImage: `linear-gradient(to right, ${fromColor}, ${toColor})`,
-  };
+  const panelVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.6rem",
+  });
+  const paperVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor: "#241335",
+    radius: "999px",
+    shadowOffset: "3px",
+  });
 
   return (
     <nav
       aria-label="Main navigation"
       className={[
         fixed ? "fixed top-0 left-0 right-0 z-50" : "relative",
-        "backdrop-blur-md anime-fade-in",
+        "anime-manga-panel backdrop-blur-md anime-fade-in",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
-      style={{ ...gradientBg, ...glowShadow, ...style }}
+      style={{ ...panelVars, ...style }}
     >
       <div className="relative overflow-hidden">
         <Sparkles color={fromColor} count={2} />
@@ -71,8 +67,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex-shrink-0">
               {typeof brand === "string" ? (
                 <span
-                  className="text-xl font-bold tracking-wide anime-text-glow"
-                  style={{ ...brandGradient, color: textColor }}
+                  className="anime-manga-chip inline-flex px-4 py-2 text-base font-bold uppercase tracking-[0.18em] text-white"
+                  style={panelVars}
                 >
                   {brand}
                 </span>
@@ -89,33 +85,15 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={item.href}
                   aria-current={item.active ? "page" : undefined}
                   className={[
-                    "relative px-4 py-2 text-sm font-medium rounded-lg",
+                    "relative px-4 py-2 text-sm font-semibold uppercase tracking-[0.12em]",
                     "transition-all duration-300",
-                    "hover:bg-white/10",
-                    "group",
+                    item.active
+                      ? "anime-manga-chip text-white"
+                      : "anime-manga-paper text-[#241335]",
                   ].join(" ")}
-                  style={{ color: textColor }}
+                  style={item.active ? panelVars : paperVars}
                 >
                   <span className="relative z-10">{item.label}</span>
-                  {/* Glow underline */}
-                  <span
-                    className={[
-                      "absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] rounded-full",
-                      "transition-all duration-300",
-                      item.active
-                        ? "w-4/5 opacity-100"
-                        : "w-0 opacity-0 group-hover:w-3/5 group-hover:opacity-70",
-                    ].join(" ")}
-                    style={activeGradient}
-                    aria-hidden="true"
-                  />
-                  {item.active && (
-                    <span
-                      className="absolute inset-0 rounded-lg opacity-10"
-                      style={{ background: fromColor }}
-                      aria-hidden="true"
-                    />
-                  )}
                 </a>
               ))}
             </div>
@@ -129,8 +107,8 @@ export const Navbar: React.FC<NavbarProps> = ({
               {/* Mobile menu button */}
               <button
                 type="button"
-                className="md:hidden p-2 rounded-lg transition-colors hover:bg-white/10"
-                style={{ color: textColor }}
+                className="anime-manga-paper md:hidden p-2 transition-colors"
+                style={paperVars}
                 aria-expanded={mobileOpen}
                 aria-controls="navbar-mobile-menu"
                 aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -177,11 +155,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   href={item.href}
                   aria-current={item.active ? "page" : undefined}
                   className={[
-                    "block px-4 py-2 text-sm font-medium rounded-lg",
-                    "transition-colors duration-200",
-                    item.active ? "bg-white/10" : "hover:bg-white/5",
+                    item.active ? "anime-manga-chip text-white" : "anime-manga-paper text-[#241335]",
+                    "block px-4 py-2 text-sm font-semibold uppercase tracking-[0.12em]",
                   ].join(" ")}
-                  style={{ color: textColor }}
+                  style={item.active ? panelVars : paperVars}
                 >
                   {item.label}
                 </a>

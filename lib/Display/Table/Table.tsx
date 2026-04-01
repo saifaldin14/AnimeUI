@@ -1,4 +1,5 @@
 import React from "react";
+import { getAnimePaperVars, getAnimeVars } from "../../shared";
 
 type TableProps = {
   headers: string[];
@@ -23,21 +24,33 @@ export const Table: React.FC<TableProps> = ({
   className = "",
   style,
 }) => {
+  const panelVars = getAnimeVars({
+    fromColor,
+    toColor,
+    textColor: "#ffffff",
+    radius: "1.5rem",
+  });
+  const paperVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.4rem",
+  });
+
   return (
-    <div className={`overflow-x-auto ${className}`} style={style}>
+    <div
+      className={`anime-manga-paper overflow-x-auto ${className}`}
+      style={{ ...paperVars, ...style }}
+    >
       <table className="min-w-full" role="table">
         {/* Table Header */}
         <thead>
-          <tr
-            style={{
-              background: `linear-gradient(to right, ${fromColor}, ${toColor})`,
-            }}
-          >
+          <tr className="anime-manga-panel" style={panelVars}>
             {headers.map((header, index) => (
               <th
                 key={index}
-                className="px-6 py-3 text-left text-xs font-anime uppercase tracking-wider"
-                style={{ color: textColor }}
+                className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-[0.16em]"
+                style={{ color: "#ffffff" }}
                 scope="col"
               >
                 {header}
@@ -46,18 +59,18 @@ export const Table: React.FC<TableProps> = ({
           </tr>
         </thead>
         {/* Table Body */}
-        <tbody className="bg-white divide-y divide-pink-200">
+        <tbody className="divide-y divide-[#241335]/10 bg-white/60">
           {data.map((row, rowIndex) => (
             <tr
               key={rowIndex}
               className={`${
-                striped && rowIndex % 2 === 0 ? "bg-pink-50" : ""
-              } ${hoverable ? "hover:bg-pink-100" : ""} transition-colors`}
+                striped && rowIndex % 2 === 0 ? "bg-pink-50/60" : ""
+              } ${hoverable ? "hover:bg-white/90" : ""} transition-colors`}
             >
               {headers.map((header, colIndex) => (
                 <td
                   key={colIndex}
-                  className="px-6 py-4 whitespace-nowrap text-sm"
+                  className="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#241335]"
                 >
                   {row[header]}
                 </td>
@@ -66,26 +79,6 @@ export const Table: React.FC<TableProps> = ({
           ))}
         </tbody>
       </table>
-      {/* Anime Vibe Elements */}
-      <div className="relative" aria-hidden="true">
-        <div className="absolute inset-0 pointer-events-none">
-          {/* Floating Hearts */}
-          <div className="absolute top-2 left-4 w-4 h-4 transform rotate-45 anime-float-rotate">
-            <div className="absolute inset-0 bg-pink-300 rounded-full"></div>
-            <div className="absolute inset-0 bg-pink-300 rounded-full transform -translate-x-full"></div>
-          </div>
-          <div className="absolute bottom-4 right-6 w-3 h-3 transform rotate-45 anime-float-rotate anime-delay-500">
-            <div className="absolute inset-0 bg-purple-300 rounded-full"></div>
-            <div className="absolute inset-0 bg-purple-300 rounded-full transform -translate-x-full"></div>
-          </div>
-          {/* Sparkles */}
-          <div className="absolute top-1/3 left-1/2 w-2 h-2 bg-yellow-300 rounded-full animate-ping"></div>
-          <div className="absolute bottom-1/4 right-1/3 w-2 h-2 bg-yellow-300 rounded-full animate-ping anime-delay-300"></div>
-          {/* Floating Stars */}
-          <div className="absolute top-6 left-1/4 w-1.5 h-1.5 bg-white rounded-full anime-twinkle"></div>
-          <div className="absolute bottom-8 right-1/4 w-2 h-2 bg-white rounded-full anime-twinkle anime-delay-200"></div>
-        </div>
-      </div>
     </div>
   );
 };

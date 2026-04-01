@@ -1,4 +1,5 @@
 import React from "react";
+import { getAnimePaperVars } from "../../shared";
 
 type AlertType = "success" | "error" | "warning" | "info";
 
@@ -46,6 +47,19 @@ export const Alert: React.FC<AnimeAlertProps> = ({
   customColors,
 }) => {
   const defaultStyles = alertTypeStyles[type];
+  const accentMap: Record<AlertType, [string, string]> = {
+    success: ["#22c55e", "#86efac"],
+    error: ["#ef4444", "#fb7185"],
+    warning: ["#f59e0b", "#fde047"],
+    info: ["#3b82f6", "#7dd3fc"],
+  };
+  const [fromColor, toColor] = accentMap[type];
+  const mangaVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor: customColors?.text ?? "#241335",
+    radius: "1.25rem",
+  });
 
   const containerStyle = customColors
     ? {
@@ -57,18 +71,21 @@ export const Alert: React.FC<AnimeAlertProps> = ({
 
   return (
     <div
-      className={`relative border-l-4 p-4 mb-4 animate-fadeIn rounded-md shadow-md ${
-        !customColors
-          ? `${defaultStyles.background} ${defaultStyles.border} ${defaultStyles.text}`
-          : ""
+      className={`anime-manga-paper relative mb-4 overflow-hidden p-4 animate-fadeIn ${
+        !customColors ? `${defaultStyles.text}` : ""
       }`}
-      style={containerStyle}
+      style={{ ...mangaVars, ...containerStyle }}
     >
-      <p className="font-anime">{message}</p>
+      <div
+        className="absolute bottom-0 left-0 top-0 w-3"
+        style={{ background: `linear-gradient(180deg, ${fromColor}, ${toColor})` }}
+        aria-hidden="true"
+      />
+      <p className="pl-3 font-semibold uppercase tracking-[0.08em]">{message}</p>
       {onClose && (
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 text-xl leading-none focus:outline-none"
+          className="absolute right-3 top-3 text-xl leading-none focus:outline-none"
         >
           &times;
         </button>

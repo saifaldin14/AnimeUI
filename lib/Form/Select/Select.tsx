@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { getAnimePaperVars } from "../../shared";
 
 type Option = {
   label: string;
@@ -26,11 +27,17 @@ export const Select: React.FC<SelectProps> = ({
   disabled = false,
   fromColor = "#ec4899", // Default pink-500
   toColor = "#a855f7", // Default purple-500
-  textColor = "#ffffff", // Default white
+  textColor = "#241335",
   className = "",
   style,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const mangaVars = getAnimePaperVars({
+    fromColor,
+    toColor,
+    textColor,
+    radius: "1.25rem",
+  });
 
   const selectedOption = options.find((option) => option.value === value);
 
@@ -53,16 +60,13 @@ export const Select: React.FC<SelectProps> = ({
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         aria-disabled={disabled}
-        className={`w-full px-4 py-2 text-left rounded-lg shadow-md focus:outline-none ${
+        className={`anime-manga-paper anime-manga-pressable w-full px-4 py-3 text-left focus:outline-none ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
         onClick={toggleDropdown}
-        style={{
-          background: `linear-gradient(135deg, ${fromColor}, ${toColor})`,
-          color: textColor,
-        }}
+        style={mangaVars}
       >
-        <span className="font-anime">
+        <span className="font-semibold uppercase tracking-[0.14em]">
           {selectedOption ? selectedOption.label : placeholder}
         </span>
         <svg
@@ -78,8 +82,8 @@ export const Select: React.FC<SelectProps> = ({
       {isOpen && (
         <ul
           role="listbox"
-          className="absolute z-10 w-full mt-1 bg-white rounded-lg shadow-lg overflow-hidden"
-          style={{ color: "black" }}
+          className="anime-manga-paper absolute z-10 mt-3 w-full overflow-hidden"
+          style={mangaVars}
         >
           {options.map((option) => (
             <li key={option.value}>
@@ -87,7 +91,7 @@ export const Select: React.FC<SelectProps> = ({
                 type="button"
                 role="option"
                 aria-selected={option.value === value}
-                className="w-full text-left px-4 py-2 hover:bg-gray-100 font-anime"
+                className="w-full border-b border-[#241335]/10 px-4 py-3 text-left font-semibold uppercase tracking-[0.1em] transition-colors hover:bg-white/60"
                 onClick={() => handleOptionClick(option.value)}
               >
                 {option.label}
@@ -99,10 +103,8 @@ export const Select: React.FC<SelectProps> = ({
       {/* Anime Vibe Elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Floating Elements */}
-        <div className="absolute top-2 left-4 w-2 h-2 bg-white rounded-full anime-twinkle"></div>
-        <div className="absolute top-4 right-4 w-3 h-3 bg-white rounded-full anime-twinkle anime-delay-200"></div>
-        <div className="absolute bottom-2 left-6 w-3 h-3 bg-yellow-300 rounded-full animate-ping"></div>
-        <div className="absolute bottom-4 right-6 w-2 h-2 bg-pink-300 rounded-full anime-float anime-delay-300"></div>
+        <div className="absolute left-4 top-0 h-1 w-20 rounded-full bg-gradient-to-r from-white/90 to-transparent"></div>
+        <div className="absolute bottom-3 left-6 h-1.5 w-8 rounded-full bg-gradient-to-r from-pink-300/70 to-transparent"></div>
       </div>
     </div>
   );
